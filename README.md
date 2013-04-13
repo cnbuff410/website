@@ -1,4 +1,4 @@
-blogo
-=====
+website
+=======
 
-Yet another blog engine in Golang
+Code for my personal website running on AppEngine
