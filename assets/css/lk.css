@@ -1,0 +1,43 @@
+body {
+		background-image: url('../img/bg.png');
+		background-repeat:repeat;
+}
+
+.footer {
+		margin-top:70px;
+		display: block; 
+		clear: both; 
+		text-align: right; 
+		color: #999;
+}
+
+.name {
+		margin-bottom:30px;
+		margin-top:50px;
+		font-family:'Lora';
+}
+
+.dl-horizontal {
+		margin-top:30px;
+}
+
+.bigtext {
+		font-size: 16px;
+}
+
+.desc {
+		padding:10px;
+}
+
+.navbar-inner {
+		font-weight:bold; 
+		background-color:#2d3538;
+		text-align:center;
+}
+
+.navbar .nav,
+.navbar .nav > li{
+		float:none;
+		display:inline-block;
+		vertical-align: top;
+}
