@@ -1,43 +1,84 @@
+/** {*/
+    /*border: 1px solid red;*/
+/*}*/
+
 body {
-		background-image: url('../img/bg.png');
-		background-repeat:repeat;
+    margin: 0 auto;
+    font-family:'Roboto';
+    background-image: url('../img/bg.png');
+    background-repeat: repeat;
 }
 
 .footer {
-		margin-top:70px;
-		display: block; 
-		clear: both; 
-		text-align: right; 
-		color: #999;
+    margin-top: 50px;
+    display: block;
+    clear: both;
+    text-align: center;
+    color: #999;
 }
 
-.name {
-		margin-bottom:30px;
-		margin-top:50px;
-		font-family:'Lora';
+.menu {
+    margin: 0 0;
+}
+
+.menu .pure-menu {
+    padding: 0.5em;
+    background-color: black;
+}
+
+.menu .pure-menu li a {
+    color: white;
+    font-weight: bold;
+    font-size: 110%;
+}
+
+.menu .pure-menu li a:hover,
+.menu .pure-menu li a:focus {
+    border: none;
+    color: #33B5E5;
+}
+
+.pure-menu-selected {
+    background-color: grey;
+}
+
+#profile {
+    padding: 1.5em;
+}
+
+#name {
+    font-family:'Lora';
+    text-align: center;
+    font-size: 250%;
+    font-weight: bold;
+    margin: 0em 0;
+    line-height: 1.2em;
+}
+
+#intro {
+    padding: 1.5em;
+    font-size: 115%;
 }
 
 .dl-horizontal {
-		margin-top:30px;
-}
-
-.bigtext {
-		font-size: 16px;
+    margin-top:20px;
 }
 
 .desc {
-		padding:10px;
+    padding:10px;
 }
 
-.navbar-inner {
-		font-weight:bold; 
-		background-color:#2d3538;
-		text-align:center;
+.img-circle {
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+    border-radius: 500px;
 }
 
-.navbar .nav,
-.navbar .nav > li{
-		float:none;
-		display:inline-block;
-		vertical-align: top;
+.l-box {
+    padding: 1em;
+}
+
+.term {
+    font-weight: bold;
+    font-size: 115%;
 }
