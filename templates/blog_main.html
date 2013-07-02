@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Kun's Blog</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+        <link rel="stylesheet" href="css/blog.css">
+
+        <script src="http://use.typekit.net/ajf8ggy.js"></script>
+        <script>
+            try { Typekit.load(); } catch (e) {}
+        </script>
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-41480445-1', 'purecss.io');
+ga('send', 'pageview');
+        </script>
+
+    </head>
+    <body>
+        <div class="pure-g-r" id="layout">
+            <div class="pure-u-1" align="center">
+                <h1>All Posts</h1>
+            </div>
+
+            <div class="content pure-u-1" align="center">
+                <div class="pure-u-1-2">
+                    <div class="pure-menu pure-menu-open">
+                        <ul class="post-list">
+                            <li class="pure-menu-heading">2013</li>
+                            <li><a href="#">Finance</a></li>
+                            <li><a href="#">Flickr</a></li>
+                            <li><a href="#">Messenger</a></li>
+                            <li><a href="#">Sports</a></li>
+                            <li><a href="#">Finance</a></li>
+                            <li class="pure-menu-heading">2012</li>
+                            <li><a href="#">Games</a></li>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">OMG!</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="http://yui.yahooapis.com/3.10.1/build/yui/yui-min.js"></script>
+        <script>
+            YUI().use('node-base', 'node-event-delegate', function (Y) {
+                // This just makes sure that the href="#" attached to the <a> elements
+                // don't scroll you back up the page.
+                Y.one('.content').delegate('click', function (e) {
+                    e.preventDefault();
+                }, 'a[href="#"]');
+            });
+        </script>
+    </body>
+
+    <footer class="footer">
+        <div class="pure-menu pure-menu-horizontal pure-menu-open">
+            <ul>
+                <li><a href="http://www.Kunli.me/">About</a></li>
+                <li><a href="https://plus.google.com/106855304824120284695">Google+</a></li>
+                <li><a href="https://github.com/cnbuff410">Github</a></li>
+            </ul>
+        </div>
+    </footer>
+</html>
