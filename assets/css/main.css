@@ -1,13 +1,4 @@
-/** {*/
-    /*border: 1px solid red;*/
-/*}*/
-
-body {
-    margin: 0 auto;
-    font-family:'Roboto';
-    background-image: url('../img/bg.png');
-    background-repeat: repeat;
-}
+@import url("base.css");
 
 .footer {
     margin-top: 50px;
