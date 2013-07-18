@@ -8,29 +8,23 @@
     color: #999;
 }
 
-.menu {
+.pure-menu {
     margin: 0 0;
-}
-
-.menu .pure-menu {
     padding: 0.5em;
-    background-color: black;
 }
 
-.menu .pure-menu li a {
-    color: white;
+.pure-menu ul {
+}
+
+.pure-menu li a {
     font-weight: bold;
     font-size: 110%;
 }
 
-.menu .pure-menu li a:hover,
-.menu .pure-menu li a:focus {
+.pure-menu li a:hover,
+.pure-menu li a:focus {
     border: none;
     color: #33B5E5;
-}
-
-.pure-menu-selected {
-    background-color: grey;
 }
 
 #profile {

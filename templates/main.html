@@ -14,117 +14,100 @@
     </head>
 
     <body>
-        <div class="pure-g-r">
-            <!-- Menu -->
-            <div class="pure-u-1 menu">
-                <div class="pure-menu pure-menu-open pure-menu-horizontal">
-                    <ul>
-                        <li class="pure-menu-selected"><a href="#">Home</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="pdf/lk-cv.pdf">Resume</a></li>
-                    </ul>
+        <nav class="pure-menu pure-menu-open pure-menu-horizontal">
+            <ul>
+                <li class="pure-menu-selected"><a href="#">Home</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="pdf/lk-cv.pdf">Resume</a></li>
+            </ul>
+        </nav>
+
+        <article id="about-me" class="pure-g-r">
+            <!-- About me -->
+            <div class="pure-u-1-5">
+            </div>
+            <div class="pure-u-1-5">
+                <div id="profile">
+                    <img align="center" src="img/kun.jpg" class="img-circle">
                 </div>
             </div>
-
-            <!-- Splash -->
-            <div class="pure-u-1">
-                <div class="pure-g-r">
-                    <div class="pure-u-1-5">
+            <div class="pure-u-2-5" align="center">
+                <div id="intro">
+                    <div>
+                        <h1 id="name"> Kun Li </h1>
                     </div>
-                    <div class="pure-u-1-5">
-                        <div id="profile">
-                            <img align="center" src="img/kun.jpg" class="img-circle">
+                    <div id="introtext">
+                        <p> I’m a developer in <a
+                                href="http://www.athletearchitect.com">Athlete Architect
+                            </a> based in Boulder, Colorado. We are aiming at enabling
+                            fitness for anyone, anywhere, anytime, using wearable
+                            technology.
+                        </p>
+                        <p>
+                            Shoot me an <a
+                                href="mailto:likunarmstrong@gmail.com">email</a> if
+                            you want to get in touch.
+                        </p>
+                    </div>
+
+                    <div >
+                        <div class="g-follow" data-annotation="bubble" data-height="24"
+                            data-href="//plus.google.com/106855304824120284695"
+                            data-rel="author">
                         </div>
-                    </div>
-                    <div class="pure-u-2-5" align="center">
-                        <div id="intro">
-                            <div>
-                                <h1 id="name"> Kun Li </h1>
-                            </div>
-                            <div id="introtext">
-                                <p> I’m a developer in <a
-                                        href="www.athletearchitect.com">Athlete Architect
-                                    </a> based in Boulder, Colorado. We are aiming at enabling
-                                    fitness for anyone, anywhere, anytime, using wearable
-                                    technology.
-                                </p>
-                                <p>
-                                    Shoot me an <a
-                                        href="mailto:likunarmstrong@gmail.com">email</a> if
-                                    you want to get in touch.
-                                </p>
-                            </div>
 
-                            <div >
-                                <div class="g-follow" data-annotation="bubble" data-height="24"
-                                    data-href="//plus.google.com/106855304824120284695"
-                                    data-rel="author">
-                                </div>
-
-                                <script type="text/javascript">
-                                    (function() {
-                                        var po = document.createElement('script');
-                                        po.type = 'text/javascript';
-                                        po.async = true;
-                                        po.src = 'https://apis.google.com/js/plusone.js';
-                                        var s = document.getElementsByTagName('script')[0];
-                                        s.parentNode.insertBefore(po, s);
-                                    })();
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pure-u-1-5">
+                        <script type="text/javascript">
+                            (function() {
+                                var po = document.createElement('script');
+                                po.type = 'text/javascript';
+                                po.async = true;
+                                po.src = 'https://apis.google.com/js/plusone.js';
+                                var s = document.getElementsByTagName('script')[0];
+                                s.parentNode.insertBefore(po, s);
+                            })();
+                        </script>
                     </div>
                 </div>
             </div>
-
-            <!-- Details -->
-            <div class="pure-u-1">
-                <div class="pure-g-r">
-                    <div class="pure-u-1-5">
-                    </div>
-                    <div class="pure-u-3-5">
-                        <dl class="dl-horizontal">
-                            <dt class="l-box term">
-                            Bragging rights
-                            </dt>
-                            <dd>
-                            I did the very first prototype version of the <a href="http://www.android.com/whatsnew/">Official Gesture Keyboard</a>,
-                            which is then introduced in Android 4.2 system.
-                            </dd>
-
-                            <dt class="l-box term">
-                            Academic Experiences
-                            </dt>
-                            <dd>
-                            I was a PhD student in University of Colorado Boulder majoring in Embedded System.
-                            I have created several designs, proof-of-concept implementations, and published <a href="pdf/lk-cv.pdf">many papers</a> in the field.
-                            </dd>
-
-                            <dt class="l-box term">
-                            Industry Experiences
-                            </dt>
-                            <dd>
-                            Prior to founding xxx, I spent 3 summers working at Google Research, Android, and Google Ads team,
-                            during which I am very fortunate to have the opportunity to work with many world-class programmers/researchers.
-                            </dd>
-
-                            <dt class="l-box term">
-                            Personal believes
-                            </dt>
-                            <dd>
-                            Skepticism toward bureaucracy, openness to creativity, unselfishness in
-                            sharing accomplishments, urge to make improvements.
-                            </dd>
-                        </dl>
-                    </div>
-                    <div class="pure-u-1-5">
-                    </div>
-                </div>
+            <div class="pure-u-1-5">
             </div>
+        </article>
 
-        </div>
+        <!-- Details -->
+        <article id="Details" class="pure-g-r">
+            <div class="pure-u-1-5">
+            </div>
+            <div class="pure-u-3-5">
+                <dl class="dl-horizontal">
+                    <dt class="l-box term">
+                    Bragging rights
+                    </dt>
+                    <dd>
+                    I did the very first prototype version of the <a href="http://www.android.com/whatsnew/">Official Gesture Keyboard</a>,
+                    which is then introduced in Android 4.2 system.
+                    </dd>
+
+                    <dt class="l-box term">
+                    Academic Experiences
+                    </dt>
+                    <dd>
+                    I was a PhD student in University of Colorado Boulder majoring in Embedded System.
+                    I have created several designs, proof-of-concept implementations, and published <a href="pdf/lk-cv.pdf">many papers</a> in the field.
+                    </dd>
+
+                    <dt class="l-box term">
+                    Industry Experiences
+                    </dt>
+                    <dd>
+                    Prior to founding xxx, I spent 3 summers working at Google Research, Android, and Google Ads team,
+                    during which I am very fortunate to have the opportunity to work with many world-class programmers/researchers.
+                    </dd>
+
+                </dl>
+            </div>
+            <div class="pure-u-1-5">
+            </div>
+        </article>
     </body>
 
     <footer class="footer">

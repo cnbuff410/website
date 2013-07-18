@@ -3,27 +3,24 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Kun Li">
 
         <title>Kun's Blog</title>
-        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
-        <link rel="stylesheet" href="css/blog.css">
 
-        <script src="http://use.typekit.net/ajf8ggy.js"></script>
-        <script>
-            try { Typekit.load(); } catch (e) {}
-        </script>
-
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-41480445-1', 'purecss.io');
-ga('send', 'pageview');
-        </script>
-
+        <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+        <link href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css" rel="stylesheet" >
+        <link href="css/main.css" rel="stylesheet" >
     </head>
     <body>
+        <nav class="pure-menu pure-menu-open pure-menu-horizontal">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li class="pure-menu-selected"><a href="#">Blog</a></li>
+                <li><a href="pdf/lk-cv.pdf">Resume</a></li>
+            </ul>
+        </nav>
+
         <div class="pure-g-r" id="layout">
             <div class="pure-u-1" align="center">
                 <h1>All Posts</h1>
@@ -62,12 +59,9 @@ ga('send', 'pageview');
     </body>
 
     <footer class="footer">
-        <div class="pure-menu pure-menu-horizontal pure-menu-open">
-            <ul>
-                <li><a href="http://www.Kunli.me/">About</a></li>
-                <li><a href="https://plus.google.com/106855304824120284695">Google+</a></li>
-                <li><a href="https://github.com/cnbuff410">Github</a></li>
-            </ul>
+        <div>
+            <p> This site is hosted on <a href="https://appengine.google.com/">AppEngine</a> and written in <a href="http://golang.org/">Go programming language</a> </p>
+            <p>&copy; 2013. All rights reserved.</p>
         </div>
     </footer>
 </html>
