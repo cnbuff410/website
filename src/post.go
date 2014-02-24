@@ -6,7 +6,9 @@
 
 package main
 
+/*
 import (
+	"html/template"
 	"strings"
 	"time"
 
@@ -16,18 +18,14 @@ import (
 
 type Post struct {
 	Key      string
-	Content  string
+	Content  template.HTML
 	Title    string
 	Author   string
 	VisitCnt int64
 	Tags     []string
-	Created  time.Time
-	Last_Mod time.Time
+	Pubtime  time.Time
+	Modtime  time.Time
 }
-
-/*type Comments struct {
-	Comment []string
-}*/
 
 func New(title, content string) Post {
 	return Post{
@@ -88,3 +86,4 @@ func generate_key(p string) string {
 	key = strings.ToLower(key)
 	return key
 }
+*/

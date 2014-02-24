@@ -1,9 +1,10 @@
 package main
 
 import (
-	"appengine"
 	"html/template"
 	"net/http"
+
+	"appengine"
 )
 
 const (
@@ -17,10 +18,6 @@ func init() {
 
 func mainHandler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
-	c.Infof("Visitor from country: %s", r.Header.Get("X-AppEngine-CountryCountry"))
-	c.Infof("Visitor from region: %s", r.Header.Get("X-AppEngine-RegionName"))
-	c.Infof("Visitor from city: %s", r.Header.Get("X-AppEngine-CityName"))
-	c.Infof("Visitor from location: %s", r.Header.Get("X-AppEngine-CityLatLong"))
 
 	// Enable cache
 	w.Header().Set("cache-control", "public")
@@ -31,7 +28,7 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 		c.Infof("path: %s", r.URL.Path)
 		c.Infof("scheme: %s", r.URL.Scheme)
 
-		t := template.Must(template.ParseFiles("templates/main.html"))
+		t := template.Must(template.ParseFiles("frontend/index.html"))
 
 		if err := t.Execute(w, nil); err != nil {
 			http.Error(w, err.Error(),
@@ -44,7 +41,7 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 func blogHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	if r.Method == "GET" {
-		t := template.Must(template.ParseFiles("templates/blog_main.html"))
+		t := template.Must(template.ParseFiles("frontend/blog_main.html"))
 
 		if err := t.Execute(w, nil); err != nil {
 			http.Error(w, err.Error(),
