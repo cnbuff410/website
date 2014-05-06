@@ -8,18 +8,21 @@ handlers:
 #  static_files: icon.ico
 #  upload: icon\.ico
 - url: /css
-  static_dir: frontend/css
+  static_dir: web/css
 - url: /img
-  static_dir: frontend/img
+  static_dir: web/img
 - url: /js
-  static_dir: frontend/js
+  static_dir: web/js
 - url: /pdf
-  static_dir: frontend/pdf
+  static_dir: web/pdf
 - url: /fonts
-  static_dir: frontend/fonts
+  static_dir: web/fonts
   mime_type: application/x-font-otf
 - url: /font-awesome
-  static_dir: frontend/font-awesome
+  static_dir: web/font-awesome
   mime_type: application/x-font-otf
 - url: /.*
   script: _go_app
+
+skip_files:
+- ^(.*/)?\.rst$

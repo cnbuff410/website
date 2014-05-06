@@ -1,89 +1,92 @@
-/*
- * Put your project description here
- *
- * Author: likunarmstrong@gmail.com
- */
+// Created by Kun Li(likunarmstrong@gmail.com) on 03/08/2014.
+// All rights reserved.
 
 package main
 
-/*
 import (
-	"html/template"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
-
 	"appengine"
-	"appengine/datastore"
+
+	"code.google.com/p/go.net/html"
 )
 
+const (
+	pathPrefix    string = "web/html/posts"
+	datePreFormat string = "2006-01-02"
+	dateFormat    string = "Mon, Jan _2 2006"
+)
+
+// Post represent an article
 type Post struct {
 	Key      string
-	Content  template.HTML
 	Title    string
-	Author   string
+	Date     string
+	Link     string
 	VisitCnt int64
 	Tags     []string
-	Pubtime  time.Time
-	Modtime  time.Time
 }
 
-func New(title, content string) Post {
-	return Post{
-		Key:      generate_key(title),
-		Content:  content,
-		Title:    title,
-		Author:   "Kun Li",
-		VisitCnt: 0,
-		Created:  time.Now(),
-		Last_Mod: time.Now()}
-}
-
-func (p Post) Save(c appengine.Context) {
-	key := datastore.NewKey(c, "Post", p.Key, 0, GlobalKey(c))
-	datastore.Put(c, key, &p)
-	// Check if it's modify or create
-}
-
-func Get(c appengine.Context, key string) (Post, error) {
-	q := datastore.NewQuery("Entity").
-		Ancestor(GlobalKey(c)).
-		Filter("Key =", key)
-
-	t := q.Run(c)
-	var p Post
-	_, err := t.Next(&p)
-
+func getPosts(c appengine.Context, r *http.Request) ([]*Post, error) {
+	fileInfos, err := ioutil.ReadDir(pathPrefix)
 	if err != nil {
-		return p, err
+		return nil, err
 	}
-
-	return p, nil
-}
-
-func GetLatest(c appengine.Context) ([]Post, error) {
-	q := datastore.NewQuery("Entity").
-		Ancestor(GlobalKey(c)).
-		Order("-Created").
-		Limit(10)
-
-	var p []Post
-	for t := q.Run(c); ; {
-		var ne Post
-		_, err := t.Next(&ne)
-		if err == datastore.Done {
-			break
+	var posts []*Post
+	var fname, path, link, title, datePreString string
+	var datePre time.Time
+	var size int64
+	var attr html.Attribute
+	var f func(*html.Node)
+	for i := len(fileInfos) - 1; i >= 0; i-- {
+		if fileInfos[i].IsDir() {
+			continue
 		}
+		fname = fileInfos[i].Name()
+		path = filepath.Join(pathPrefix, fname)
+		content, _ := os.Open(path)
+		defer content.Close()
+		doc, err := html.Parse(content)
 		if err != nil {
-			return p, err
+			// Invalid post content, simply ignore now
+			continue
 		}
-		p = append(p, ne)
-	}
-	return p, nil
-}
+		c.Infof("File %s:\n", fname)
 
-func generate_key(p string) string {
-	key := strings.Replace(p, " ", "-", -1)
-	key = strings.ToLower(key)
-	return key
+		// Extract title
+		f = func(n *html.Node) {
+			if n.Type == html.ElementNode && strings.EqualFold(n.Data, "h1") && len(n.Attr) > 0 {
+				for i := 0; i < len(n.Attr); i++ {
+					attr = n.Attr[i]
+					if strings.EqualFold(attr.Key, "class") && strings.EqualFold(attr.Val, "title") {
+						title = n.FirstChild.Data
+					}
+				}
+			}
+			for c := n.FirstChild; c != nil; c = c.NextSibling {
+				f(c)
+			}
+		}
+		f(doc)
+
+		// Extract link
+		link = fmt.Sprintf("%v/%v", r.URL.Path, fname)
+		size = fileInfos[i].Size()
+		datePreString = strings.Join(strings.Split(fname, "-")[:3], "-")
+		datePre, _ = time.Parse(datePreFormat, datePreString)
+		posts = append(posts, &Post{
+			Key:      fmt.Sprintf("%s-%d", fname, size),
+			Title:    title,
+			Date:     datePre.Format(dateFormat),
+			Link:     link,
+			VisitCnt: 100})
+	}
+
+	// Descending order based on publish time
+	return posts, nil
 }
-*/

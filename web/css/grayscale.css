@@ -149,6 +149,28 @@ a:focus {
     font-size: 18px;
 }
 
+.post-line {
+    line-height: 400%;
+}
+
+.post-line:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.post-title {
+    display: inline;
+    color: #fff;
+    float: left;
+}
+
+.post-date {
+    display: inline;
+    color: #fff;
+    float: right;
+}
+
 @media(min-width:767px) {
     .intro {
         height: 100%;
@@ -302,6 +324,10 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
+}
+
+ul {
+    list-style-type: none;
 }
 
 footer {
