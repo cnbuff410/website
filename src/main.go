@@ -5,7 +5,9 @@ package main
 
 import (
 	"html/template"
+	"io/ioutil"
 	"net/http"
+	"path/filepath"
 	"appengine"
 
 	"github.com/gorilla/mux"
@@ -38,8 +40,7 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 		"web/html/chrome/nav.html"))
 
 	if err := t.Execute(w, nil); err != nil {
-		http.Error(w, err.Error(),
-			http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 }
@@ -62,20 +63,27 @@ func blogMainHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if err := t.Execute(w, Posts); err != nil {
-		http.Error(w, err.Error(),
-			http.StatusInternalServerError)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 }
 
 func blogPostHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	_ = vars["category"]
-	t := template.Must(template.ParseFiles("web/html/blog_post.html"))
+	fileName := vars["post"]
+	content, err := ioutil.ReadFile(filepath.Join(pathPrefix, fileName))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	t := template.Must(template.ParseFiles(
+		"web/html/blog_post.html",
+		"web/html/chrome/head.html",
+		"web/html/chrome/foot.html",
+		"web/html/chrome/nav-post.html"))
 
-	if err := t.Execute(w, nil); err != nil {
-		http.Error(w, err.Error(),
-			http.StatusInternalServerError)
+	if err := t.Execute(w, &PostContent{Content: byte2html(content)}); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 }

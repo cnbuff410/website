@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 35px;
+    margin: 0 0 30px;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
@@ -53,6 +53,15 @@ a:focus {
 
 .light {
     font-weight: 400;
+}
+
+.navbar-post {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background-color: #404040;
+    opacity:0.9;
 }
 
 .navbar {
@@ -110,6 +119,15 @@ a:focus {
         transition: background .5s ease-in-out,padding .5s ease-in-out;
     }
 
+    .navbar-post {
+        padding: 0 0;
+        border-bottom: 0;
+        letter-spacing: 1px;
+        -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+        transition: background .5s ease-in-out,padding .5s ease-in-out;
+    }
+
     .top-nav-collapse {
         padding: 0;
         background-color: #000;
@@ -117,6 +135,7 @@ a:focus {
 
     .navbar-custom.top-nav-collapse {
         border-bottom: 1px solid rgba(255,255,255,.3);
+        height: 10px;
     }
 }
 
@@ -150,13 +169,25 @@ a:focus {
 }
 
 .post-line {
-    line-height: 400%;
+    line-height: 300%;
 }
 
 .post-line:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.title-text {
+    font-weight: normal;
+    text-transform: capitalize;
+    margin: 0 0 23px;
+}
+
+.date-text {
+    font-weight: normal;
+    text-transform: capitalize;
+    margin: 0 0 23px;
 }
 
 .post-title {
@@ -246,8 +277,60 @@ a:focus {
     padding-top: 100px;
 }
 
+.post {
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    background-color: #000;
+    vertical-align: middle;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#post-text {
+    text-align: left;
+    color: #eee;
+}
+
+#post-text h1,
+#post-text h2,
+#post-text h3,
+#post-text h4,
+#post-text h5,
+#post-text h6 {
+    margin: 0 0 30px;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#post-text div.document > h1:first-child {
+    text-align: center;
+}
+
+#post-text p {
+    margin: 0 0 25px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#post-text li {
+    font-size: 14px;
+    line-height: 2;
+}
+
+#post-sidebar {
+    position: fixed;
+}
+
 @media(min-width:767px) {
     .content-section {
+        padding-top: 150px;
+    }
+    .content-post {
         padding-top: 150px;
     }
 }

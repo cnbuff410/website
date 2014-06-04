@@ -5,6 +5,7 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -22,7 +23,7 @@ const (
 	dateFormat    string = "Mon, Jan _2 2006"
 )
 
-// Post represent an article
+// Post represent a post
 type Post struct {
 	Key      string
 	Title    string
@@ -30,6 +31,11 @@ type Post struct {
 	Link     string
 	VisitCnt int64
 	Tags     []string
+}
+
+// PostContent represent the html content of a post
+type PostContent struct {
+	Content template.HTML
 }
 
 func getPosts(c appengine.Context, r *http.Request) ([]*Post, error) {
