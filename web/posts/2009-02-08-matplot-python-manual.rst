@@ -1,8 +1,15 @@
 =======================
 Matplot-python用法速查
 =======================
+:Author: cnbuff410
+:Contact: likunarmstrong@gmail.com
 
-典型的Matplot例子：
+.. contents::
+
+.. role:: python(code)
+   :language: python
+
+典型Matplot例子
 ===================
 
 .. code-block:: python
@@ -22,39 +29,42 @@ Matplot-python用法速查
     plt.subplot(212)
     plt.plot(t2, np.cos(2 * np.pi * t2), ‘r–’)
 
+
 题目，坐标轴设置
 ===================
 
-最简单的就是通过title，xlabel和ylabel设置，比如::
+最简单的就是通过title，xlabel和ylabel设置，比如
 
-    xlabel("xxxx", fontsize=18, color="red")
+:python:`xlabel("xxxx", fontsize=18, color="red")`
 
 这里title是某个axis的title，如果希望整个figure有title，那么需要用suptitle() 函数，用法和title是一样的。
-x和y轴的范围设定是通过::
+x和y轴的范围设定是通过
 
-    plt.axis([0, 6, 0, 20])
+:python:`plt.axis([0, 6, 0, 20])`
 
-这就是表示x轴是0到6，y轴是0到20。也可以用xlim和ylim单独控制，比如::
+这就是表示x轴是0到6，y轴是0到20。也可以用xlim和ylim单独控制，比如
 
-    ylim( ymin, ymax )
+:python:`ylim( ymin, ymax )`
 
-当然还可以用yscale和xscale指定坐标轴的scale类型，分别是‘linear’ | ‘log’ | ‘symlog’，比如::
+当然还可以用yscale和xscale指定坐标轴的scale类型，分别是‘linear’ | ‘log’ | ‘symlog’，比如:
 
-    xscale("log")
+:python:`xscale("log")`
 
-还可以通过yaxis.grid和xaxis.grid控制怎么显示网格，是否显示网格。grid的函数是这样的::
+还可以通过yaxis.grid和xaxis.grid控制怎么显示网格，是否显示网格。grid的函数是这样的:
 
-    grid(self, b=None, which='major', **kwargs)
+:python:`grid(self, b=None, which='major', **kwargs)`
 
 如果用yaxis.grid (false)，就表示不用显示y轴方向的网格。
 
-有时候我们需要在坐标轴上放文字，比如在x轴上放置月份名称之类，这就需要xticks函数。其用法是比如::
+有时候我们需要在坐标轴上放文字，比如在x轴上放置月份名称之类，这就需要xticks函数。其用法是比如:
 
-    xticks( arange(5), ('Tom', 'Dick', 'Harry', 'Sally', 'Sue') )
+:python:`xticks( arange(5), ('Tom', 'Dick', 'Harry', 'Sally', 'Sue') )`
 
 这里，第一个参数表示放置位置，第二个是放置内容。
 
-设置曲线特征::
+设置曲线特征:
+
+.. code-block:: python
 
     lines = plt.plot(x1, y1, x2, y2)
     # use keyword args
@@ -62,7 +72,9 @@ x和y轴的范围设定是通过::
     # or matlab style string value pairs
     plt.setp(lines, 'color', 'r', 'linewidth', 2.0)
 
-如果希望知道有哪些属性可以指定，可以传递对象给setp()函数，比如::
+如果希望知道有哪些属性可以指定，可以传递对象给setp()函数，比如:
+
+.. code-block:: python
 
     lines = plt.plot([1,2,3])
     plt.setp(lines)
@@ -70,52 +82,54 @@ x和y轴的范围设定是通过::
 具体能控制的属性参见
 `pyploy tutorial <http://matplotlib.sourceforge.net/users/pyplot_tutorial.html>`_.
 
-文字处理text()命令可以被用来放置文字在绝对坐标轴上，用法是::
+文字处理text()命令可以被用来放置文字在绝对坐标轴上，用法是:
 
-    text(60, .025, r'$\mu=100,\ \sigma=15$', horizontalalignment='left', verticalalignment='top')
+:python:`text(60, .025, r'$\mu=100,\ \sigma=15$', horizontalalignment='left', verticalalignment='top')`
 
 放置的东西前面加个r表示包括数学公式。具体能控制的属性可以参见
 `属性列表 <http://matplotlib.sourceforge.net/users/text_props.html#text-properties>`_. 具体的数
 学公式和符号的表达方式参见
 `mathtext <http://matplotlib.sourceforge.net/users/mathtext.html>`_.
 
-这只是放置文字，还有一种需求是要求放置文字标注, 这时候就要用到anotate()函数了，用法大概是这样的::
+这只是放置文字，还有一种需求是要求放置文字标注, 这时候就要用到anotate()函数了，用法大概是这样的:
 
-    plt.annotate('local max', xy=(2, 1), xytext=(3, 1.5), arrowprops=dict(facecolor='black', shrink=0.05))
+:python:`plt.annotate('local max', xy=(2, 1), xytext=(3, 1.5), arrowprops=dict(facecolor='black', shrink=0.05))`
 
 第一个参数是要放置的文字，第二个参数是要指向的坐标，第三个是放置文字的坐标，最后一个是箭头属性。相关属性设置参见
 `这里 <http://matplotlib.sourceforge.net/users/annotations.html#annotations-tutorial>`_.
 
-对于经常写公式的人来讲，可能latex的格式会感觉更加常用一点。这时候，可以在放置text之前先用::
+对于经常写公式的人来讲，可能latex的格式会感觉更加常用一点。这时候，可以在放置text之前先用:
 
-    rc('text', usetex=True)
+:python:`rc('text', usetex=True)`
 
-然后与文字有关的地方都用r”"来引用，比如::
+然后与文字有关的地方都用r”"来引用，比如:
 
-    title(r"\TeX\ is Number $\displaystyle\sum_{n=1}^\infty\frac{-e^{i\pi}}{2^n}$!", fontsize=16, color='r')
+:python:`title(r"\TeX\ is Number $\displaystyle\sum_{n=1}^\infty\frac{-e^{i\pi}}{2^n}$!", fontsize=16, color='r')`
 
 画函数
 ============
 
-plt.plot最简单的形式就是take一组列表数据::
+plt.plot最简单的形式就是take一组列表数据:
 
-    plt.plot([1,2,3])
+:python:`plt.plot([1,2,3])`
 
-此时plot自动将其认为是y轴的数据，x轴数据自动分配，相当于是::
+此时plot自动将其认为是y轴的数据，x轴数据自动分配，相当于是:
 
-    plt.plot([0,1,2],[1,2,3])
+:python:`plt.plot([0,1,2],[1,2,3])`
 
-也就是说，对于plot，标准形式是::
+也就是说，对于plot，标准形式是:
 
-    plt.plot([1,2,3,4], [1,4,9,16])
+:python:`plt.plot([0,2,3,4], [1,4,9,16])`
 
-当然，后面可以跟控制表示形式的参数，比如::
+当然，后面可以跟控制表示形式的参数，比如:
 
-    plt.plot([1,2,3,4], [1,4,9,16], 'ro')
+:python:`plt.plot([1,2,3,4], [1,4,9,16], 'ro')`
 
 就表示用红色点表示，而不是直线。参数默认是’b-’，表示蓝色直线。
 
-plot还支持同时在一张图里面绘制多个图形，比如::
+plot还支持同时在一张图里面绘制多个图形，比如:
+
+.. code-block:: python
 
     import matplotlib.pyplot as plt
     plt.plot(x1, y1, 'r--', x2, y2, 'bs', x3, y3, 'g^')
@@ -131,9 +145,9 @@ plot还支持同时在一张图里面绘制多个图形，比如::
 画直方图
 =========
 
-用函数::
+用函数:
 
-    hist(x, bins=10, range=None, normed=False, cumulative=False, bottom=None, histtype='bar', align='mid', orientation='vertical', rwidth=None, log=False, **kwargs)
+:python:`hist(x, bins=10, range=None, normed=False, cumulative=False, bottom=None, histtype='bar', align='mid', orientation='vertical', rwidth=None, log=False, **kwargs)`
 
 具体用法参考
 `hist
@@ -142,8 +156,8 @@ plot还支持同时在一张图里面绘制多个图形，比如::
 画分布图
 =========
 
-例子::
-    scatter(x, y, s=20, c='b', marker='o', cmap=None, norm=None, vmin=None, vmax=None, alpha=1.0, linewidths=None, verts=None,**kwargs )
+例子:
+:python:`scatter(x, y, s=20, c='b', marker='o', cmap=None, norm=None, vmin=None, vmax=None, alpha=1.0, linewidths=None, verts=None,**kwargs )`
 
 具体参数看
 `scatter
@@ -154,11 +168,13 @@ plot还支持同时在一张图里面绘制多个图形，比如::
 画Box Plot图
 =============
 
-用matplot画Box Plot不知道有多方便，直接用函数::
+用matplot画Box Plot非常方便，直接用函数:
 
-    boxplot(x, notch=0, sym='+', vert=1, whis=1.5, positions=None, widths=None)
+:python:`boxplot(x, notch=0, sym='+', vert=1, whis=1.5, positions=None, widths=None)`
 
-你直接把一组数用x送进去，出来就是Box图。如果你想一个图表示多个Box，也很简单，让xappend多个list，出来的就是这些list的box图。一个例子如下::
+你直接把一组数用x送进去，出来就是Box图。如果你想一个图表示多个Box，也很简单，让xappend多个list，出来的就是这些list的box图。一个例子如下:
+
+.. code-block:: python
 
     for attribute in iris[type].keys():
         list = iris[type][attribute]
@@ -172,7 +188,9 @@ plot还支持同时在一张图里面绘制多个图形，比如::
 画幂函数图
 ============
 
-例子::
+例子:
+
+.. code-block:: python
 
     from matplotlib.matlab import *
 
@@ -194,7 +212,9 @@ plot还支持同时在一张图里面绘制多个图形，比如::
 显示图形中的数学公式
 =======================
 
-Matplotlib 可以支持一部分 TeX 的排版指令，因此用户在绘制含有数学公式的图形时会感到很方便并且可以得到比较满意的显示效果，所需要的仅仅是一些 TeX 的排版知识。下面的这个例子显示了如何在图形的不同位置上, 如坐标轴标签，图形的标题以及图形中适当的位置处，显示数学公式。相应的 Python 程序如下::
+Matplotlib 可以支持一部分 TeX 的排版指令，因此用户在绘制含有数学公式的图形时会感到很方便并且可以得到比较满意的显示效果，所需要的仅仅是一些 TeX 的排版知识。下面的这个例子显示了如何在图形的不同位置上, 如坐标轴标签，图形的标题以及图形中适当的位置处，显示数学公式。相应的 Python 程序如下:
+
+.. code-block:: python
 
     from matplotlib.matlab import *
 

@@ -1,5 +1,318 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>不要复杂化Vim</title>
+<meta name="author" content="cnbuff410" />
+<style type="text/css">
+
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:Date: $Date: 2007-04-11 11:48:16 +0100 (Wed, 11 Apr 2007) $
+:Revision: $Revision: 2791 $
+:Copyright: This stylesheet has been placed in the public domain.
+:Modified by: Kate Ward <kate.ward@forestent.com>
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: white }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin-left: 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eeeeee }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+/*
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+*/
+
+table.footnote {
+  border-left: solid 1px white;
+  margin-left: 1px ;
+  font-size: 80% }
+  }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+/*
+tt.docutils {
+  background-color: #eeeeee }
+*/
+
+ul.auto-toc {
+  list-style-type: none }
+
+/* customizations */
+/* div.document { font-size: 90% } */
+
+</style>
+</head>
+<body>
 <div class="document" id="vim">
 <h1 class="title">不要复杂化Vim</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>cnbuff410</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:likunarmstrong&#37;&#52;&#48;gmail&#46;com">likunarmstrong<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
+</tbody>
+</table>
 <p>我是本科的时候接触Vim的，当时就沉迷其中无法自拔，想想也可以理解，一个20出头崇尚黑客文化的少年，无意间发现了可以整天在键盘上打字而手不用碰鼠标的方式，多酷啊，写东西的效率提高不说，关键是在别人面前装黑客可以装得更像。于是乎，花大量的时间先记住各种按键，然后花大量时间去网上找Vimrc模版，能集成多少就集成多少，最后花大量时间找各种插件，什么插件看上去牛逼就装。最后抱着“把Vim打造成IDE”的远大理想，在网上到处搜寻相关文章，还到处找人争论吵架，总之最后不把Vim搞成编辑器中的高富帅，高大全，心里总是不甘心的。</p>
 <p>当然不是所有的Vimer都是和我当时一样幼稚的，但从我的观察看，类似的Vimer还是不少的。我可以理解为什么这部分Vimer会经历这个过程，但可惜的是，很多人用了很多年，还处在这个阶段，在我看来，那就是陷入了Vim的使用误区了。我在这里谈谈为什么我有这种论断，也希望能帮助年轻或者刚入门的Vimers赶紧跳出这个误区，把时间用在更有意义的地方。</p>
 <p>Vim是一个文字编辑器，它的使命是提高文字编辑的效率，完。任何别人帮Vim安排的使命，都不是Vim真正的使命。有的人说Vim能提高软件开发的效率， 有人说Vim能提高系统管理的效率，还有人说Vim能提高你的Unix的理解，我觉得最后就差有人跳出来讲“Vim如何改变一个人的生活”的故事了。</p>
@@ -8,7 +321,7 @@
 <p>这种Vim的使用方式是本末倒置，某种程度上是降低了Vim对编辑效率的提高，一个简单的例子就是vim的启动时间恶化。</p>
 <p>如果你觉得你就是这样的Vimer的话，我有两个劝告。第一个劝告是，</p>
 <div class="section" id="vim-vim">
-<h1>不要尝试让Vim做所有你能想到的事，而是尝试让Vim帮助你做你遇到的难事。</h1>
+<h1>不要尝试让Vim做所有你能想到的事，而是尝试让Vim帮助你做你遇到的难事</h1>
 <p>这句话听起来很玄乎，你会说，我这些插件都有用啊，解决的都是难事啊，你说这不是难事，那在你眼里什么才是难事？有一个办法可以很简单地帮你判断，对于你的Vim使用情况而言，什么才是真正的难事。你需要遵循下面几步:</p>
 <ol class="arabic simple">
 <li>简单化你的vimrc，更具体点，就是加上一些基本的功能，比如语法高亮，行号，noncompatible等等。这些设置加起来不会超过20行。</li>
@@ -21,7 +334,7 @@
 <p>我的第二个劝告是，</p>
 </div>
 <div class="section" id="ide">
-<h1>不要抵制IDE。</h1>
+<h1>不要抵制IDE</h1>
 <p>IDE从某些角度上讲是很差的，它们倾向于提供很多无用的功能，拖慢其他关键的使用流程，它们很臃肿，庞大，吃机器。它们都是面向初学者设计的，恨不得吧所有的信息放在你的面前（参见VS和Eclipse），所以你50%以上的屏幕都在显示不关键甚至没有关系的信息。这对于老手而言是对于编写效率的影响。这些我通通都理解。</p>
 <p>但这不是IDE的本质。对于IDE而言，虽然你用它的大部分时间都是来编辑代码，但千万别被欺骗了，代码编辑只是IDE的一个小功能。除此之外，它要自动编译，语法检查，部署可执行文件，基于语法的重构，调试，自动生成代码，管理代码版本，等等等等。对于一些领域，比如移动开发，IDE要干的事情就更多了，比如渲染当前的界面文件，管理SDK，等等。这里面有很多事情是Vim没法做的，还有一些是你可能需要花很大精力才能达到并不出色的效果。所以，盲目抵制IDE是没有意义的，只能是给你自己带来损失。</p>
 <p>这就又回到了刚才的话题。Vim是一个文本编辑器，这个星球上这好的文本编辑器之一。仅此而已。Vim不是IDE，不管你怎么去改造，Vim都不是IDE。它不面向任何一种特别的语言或者文本类型，它通用于所有的文本。在大部分文本编辑的情况下，你需要集中精力，关注于某个特定的情景，比如当前的代码文件，你还需要快速而精确的操作，不管是跳转还是编辑。这都是Vim能给你的。其他所有的一切，都不是Vim的核心。因为Vim从低层的设计开始就不是为希望像IDE那样服务的。Vim不理解你的代码（YCM很大程度上倒是缓解了这个问题），它也没打算理解的代码。你可以有一些出色的辅助功能，但大部分情况下，传统的IDE更加合适。</p>
@@ -34,3 +347,5 @@
 <p>我们要把Vim的理解简单化。这样才能将Vim用在各种各样的场合，让它帮我们解决它应该解决的问题。这点对于Vim的初学者来说尤其关键。与其浪费时间去证明Vim无所不能，不如去证明，在Vim的帮助下，你无所不能。</p>
 </div>
 </div>
+</body>
+</html>

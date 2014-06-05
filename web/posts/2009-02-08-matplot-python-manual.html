@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>Matplot-python用法速查</title>
+<meta name="author" content="cnbuff410" />
+<style type="text/css">
+
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:Date: $Date: 2007-04-11 11:48:16 +0100 (Wed, 11 Apr 2007) $
+:Revision: $Revision: 2791 $
+:Copyright: This stylesheet has been placed in the public domain.
+:Modified by: Kate Ward <kate.ward@forestent.com>
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: white }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin-left: 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eeeeee }
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+/*
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+*/
+
+table.footnote {
+  border-left: solid 1px white;
+  margin-left: 1px ;
+  font-size: 80% }
+  }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+/*
+tt.docutils {
+  background-color: #eeeeee }
+*/
+
+ul.auto-toc {
+  list-style-type: none }
+
+/* customizations */
+/* div.document { font-size: 90% } */
+
+</style>
+</head>
+<body>
+<div class="document" id="matplot-python">
+<h1 class="title">Matplot-python用法速查</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>cnbuff410</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:likunarmstrong&#37;&#52;&#48;gmail&#46;com">likunarmstrong<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
+</tbody>
+</table>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#matplot" id="id10">典型Matplot例子</a></li>
+<li><a class="reference internal" href="#id1" id="id11">题目，坐标轴设置</a></li>
+<li><a class="reference internal" href="#id4" id="id12">画函数</a></li>
+<li><a class="reference internal" href="#id5" id="id13">画子图</a></li>
+<li><a class="reference internal" href="#id6" id="id14">画直方图</a></li>
+<li><a class="reference internal" href="#id7" id="id15">画分布图</a></li>
+<li><a class="reference internal" href="#box-plot" id="id16">画Box Plot图</a></li>
+<li><a class="reference internal" href="#id8" id="id17">画幂函数图</a></li>
+<li><a class="reference internal" href="#id9" id="id18">显示图形中的数学公式</a></li>
+</ul>
+</div>
+<div class="section" id="matplot">
+<h1><a class="toc-backref" href="#id10">典型Matplot例子</a></h1>
+<pre class="code python literal-block">
+<span class="keyword namespace">import</span> <span class="name namespace">numpy</span> <span class="keyword namespace">as</span> <span class="name namespace">np</span>
+<span class="keyword namespace">import</span> <span class="name namespace">matplotlib.pyplot</span> <span class="keyword namespace">as</span> <span class="name namespace">plt</span>
+
+<span class="keyword">def</span> <span class="name function">f</span><span class="punctuation">(</span><span class="name">t</span><span class="punctuation">):</span>
+    <span class="keyword">return</span> <span class="name">np</span><span class="operator">.</span><span class="name">exp</span><span class="punctuation">(</span><span class="operator">-</span><span class="name">t</span><span class="punctuation">)</span> <span class="operator">*</span> <span class="name">np</span><span class="operator">.</span><span class="name">cos</span><span class="punctuation">(</span><span class="literal number integer">2</span> <span class="operator">*</span> <span class="name">np</span><span class="operator">.</span><span class="name">pi</span> <span class="operator">*</span> <span class="name">t</span><span class="punctuation">)</span>
+
+<span class="name">t1</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">arange</span><span class="punctuation">(</span><span class="literal number float">0.0</span><span class="punctuation">,</span> <span class="literal number float">5.0</span><span class="punctuation">,</span> <span class="literal number float">0.1</span><span class="punctuation">)</span>
+<span class="name">t2</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">arange</span><span class="punctuation">(</span><span class="literal number float">0.0</span><span class="punctuation">,</span> <span class="literal number float">5.0</span><span class="punctuation">,</span> <span class="literal number float">0.02</span><span class="punctuation">)</span>
+
+<span class="name">plt</span><span class="operator">.</span><span class="name">figure</span><span class="punctuation">(</span><span class="literal number integer">1</span><span class="punctuation">)</span>
+<span class="name">plt</span><span class="operator">.</span><span class="name">subplot</span><span class="punctuation">(</span><span class="literal number integer">211</span><span class="punctuation">)</span>
+<span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">(</span><span class="name">t1</span><span class="punctuation">,</span> <span class="name">f</span><span class="punctuation">(</span><span class="name">t1</span><span class="punctuation">),</span> <span class="literal string">'bo'</span><span class="punctuation">,</span> <span class="name">t2</span><span class="punctuation">,</span> <span class="name">f</span><span class="punctuation">(</span><span class="name">t2</span><span class="punctuation">),</span> <span class="literal string">'k'</span><span class="punctuation">)</span>
+<span class="name">plt</span><span class="operator">.</span><span class="name">subplot</span><span class="punctuation">(</span><span class="literal number integer">212</span><span class="punctuation">)</span>
+<span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">(</span><span class="name">t2</span><span class="punctuation">,</span> <span class="name">np</span><span class="operator">.</span><span class="name">cos</span><span class="punctuation">(</span><span class="literal number integer">2</span> <span class="operator">*</span> <span class="name">np</span><span class="operator">.</span><span class="name">pi</span> <span class="operator">*</span> <span class="name">t2</span><span class="punctuation">),</span> <span class="error">‘</span><span class="name">r</span><span class="error">–’</span><span class="punctuation">)</span>
+</pre>
+</div>
+<div class="section" id="id1">
+<h1><a class="toc-backref" href="#id11">题目，坐标轴设置</a></h1>
+<p>最简单的就是通过title，xlabel和ylabel设置，比如</p>
+<p><code class="python"><span class="name">xlabel</span><span class="punctuation">(</span><span class="literal string">&quot;xxxx&quot;</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">18</span><span class="punctuation">,</span> <span class="name">color</span><span class="operator">=</span><span class="literal string">&quot;red&quot;</span><span class="punctuation">)</span></code></p>
+<p>这里title是某个axis的title，如果希望整个figure有title，那么需要用suptitle() 函数，用法和title是一样的。
+x和y轴的范围设定是通过</p>
+<p><code class="python"><span class="name">plt</span><span class="operator">.</span><span class="name">axis</span><span class="punctuation">([</span><span class="literal number integer">0</span><span class="punctuation">,</span> <span class="literal number integer">6</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span> <span class="literal number integer">20</span><span class="punctuation">])</span></code></p>
+<p>这就是表示x轴是0到6，y轴是0到20。也可以用xlim和ylim单独控制，比如</p>
+<p><code class="python"><span class="name">ylim</span><span class="punctuation">(</span> <span class="name">ymin</span><span class="punctuation">,</span> <span class="name">ymax</span> <span class="punctuation">)</span></code></p>
+<p>当然还可以用yscale和xscale指定坐标轴的scale类型，分别是‘linear’ | ‘log’ | ‘symlog’，比如:</p>
+<p><code class="python"><span class="name">xscale</span><span class="punctuation">(</span><span class="literal string">&quot;log&quot;</span><span class="punctuation">)</span></code></p>
+<p>还可以通过yaxis.grid和xaxis.grid控制怎么显示网格，是否显示网格。grid的函数是这样的:</p>
+<p><code class="python"><span class="name">grid</span><span class="punctuation">(</span><span class="name builtin pseudo">self</span><span class="punctuation">,</span> <span class="name">b</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">which</span><span class="operator">=</span><span class="literal string">'major'</span><span class="punctuation">,</span> <span class="operator">**</span><span class="name">kwargs</span><span class="punctuation">)</span></code></p>
+<p>如果用yaxis.grid (false)，就表示不用显示y轴方向的网格。</p>
+<p>有时候我们需要在坐标轴上放文字，比如在x轴上放置月份名称之类，这就需要xticks函数。其用法是比如:</p>
+<p><code class="python"><span class="name">xticks</span><span class="punctuation">(</span> <span class="name">arange</span><span class="punctuation">(</span><span class="literal number integer">5</span><span class="punctuation">),</span> <span class="punctuation">(</span><span class="literal string">'Tom'</span><span class="punctuation">,</span> <span class="literal string">'Dick'</span><span class="punctuation">,</span> <span class="literal string">'Harry'</span><span class="punctuation">,</span> <span class="literal string">'Sally'</span><span class="punctuation">,</span> <span class="literal string">'Sue'</span><span class="punctuation">)</span> <span class="punctuation">)</span></code></p>
+<p>这里，第一个参数表示放置位置，第二个是放置内容。</p>
+<p>设置曲线特征:</p>
+<pre class="code python literal-block">
+<span class="name">lines</span> <span class="operator">=</span> <span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">(</span><span class="name">x1</span><span class="punctuation">,</span> <span class="name">y1</span><span class="punctuation">,</span> <span class="name">x2</span><span class="punctuation">,</span> <span class="name">y2</span><span class="punctuation">)</span>
+<span class="comment"># use keyword args</span>
+<span class="name">plt</span><span class="operator">.</span><span class="name">setp</span><span class="punctuation">(</span><span class="name">lines</span><span class="punctuation">,</span> <span class="name">color</span><span class="operator">=</span><span class="literal string">'r'</span><span class="punctuation">,</span> <span class="name">linewidth</span><span class="operator">=</span><span class="literal number float">2.0</span><span class="punctuation">)</span>
+<span class="comment"># or matlab style string value pairs</span>
+<span class="name">plt</span><span class="operator">.</span><span class="name">setp</span><span class="punctuation">(</span><span class="name">lines</span><span class="punctuation">,</span> <span class="literal string">'color'</span><span class="punctuation">,</span> <span class="literal string">'r'</span><span class="punctuation">,</span> <span class="literal string">'linewidth'</span><span class="punctuation">,</span> <span class="literal number float">2.0</span><span class="punctuation">)</span>
+</pre>
+<p>如果希望知道有哪些属性可以指定，可以传递对象给setp()函数，比如:</p>
+<pre class="code python literal-block">
+<span class="name">lines</span> <span class="operator">=</span> <span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">([</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">])</span>
+<span class="name">plt</span><span class="operator">.</span><span class="name">setp</span><span class="punctuation">(</span><span class="name">lines</span><span class="punctuation">)</span>
+</pre>
+<p>具体能控制的属性参见
+<a class="reference external" href="http://matplotlib.sourceforge.net/users/pyplot_tutorial.html">pyploy tutorial</a>.</p>
+<p>文字处理text()命令可以被用来放置文字在绝对坐标轴上，用法是:</p>
+<p><code class="python"><span class="name">text</span><span class="punctuation">(</span><span class="literal number integer">60</span><span class="punctuation">,</span> <span class="operator">.</span><span class="literal number oct">025</span><span class="punctuation">,</span> <span class="literal string">r'$\mu=100,\ \sigma=15$'</span><span class="punctuation">,</span> <span class="name">horizontalalignment</span><span class="operator">=</span><span class="literal string">'left'</span><span class="punctuation">,</span> <span class="name">verticalalignment</span><span class="operator">=</span><span class="literal string">'top'</span><span class="punctuation">)</span></code></p>
+<p>放置的东西前面加个r表示包括数学公式。具体能控制的属性可以参见
+<a class="reference external" href="http://matplotlib.sourceforge.net/users/text_props.html#text-properties">属性列表</a>. 具体的数
+学公式和符号的表达方式参见
+<a class="reference external" href="http://matplotlib.sourceforge.net/users/mathtext.html">mathtext</a>.</p>
+<p>这只是放置文字，还有一种需求是要求放置文字标注, 这时候就要用到anotate()函数了，用法大概是这样的:</p>
+<p><code class="python"><span class="name">plt</span><span class="operator">.</span><span class="name">annotate</span><span class="punctuation">(</span><span class="literal string">'local max'</span><span class="punctuation">,</span> <span class="name">xy</span><span class="operator">=</span><span class="punctuation">(</span><span class="literal number integer">2</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">),</span> <span class="name">xytext</span><span class="operator">=</span><span class="punctuation">(</span><span class="literal number integer">3</span><span class="punctuation">,</span> <span class="literal number float">1.5</span><span class="punctuation">),</span> <span class="name">arrowprops</span><span class="operator">=</span><span class="name builtin">dict</span><span class="punctuation">(</span><span class="name">facecolor</span><span class="operator">=</span><span class="literal string">'black'</span><span class="punctuation">,</span> <span class="name">shrink</span><span class="operator">=</span><span class="literal number float">0.05</span><span class="punctuation">))</span></code></p>
+<p>第一个参数是要放置的文字，第二个参数是要指向的坐标，第三个是放置文字的坐标，最后一个是箭头属性。相关属性设置参见
+<a class="reference external" href="http://matplotlib.sourceforge.net/users/annotations.html#annotations-tutorial">这里</a>.</p>
+<p>对于经常写公式的人来讲，可能latex的格式会感觉更加常用一点。这时候，可以在放置text之前先用:</p>
+<p><code class="python"><span class="name">rc</span><span class="punctuation">(</span><span class="literal string">'text'</span><span class="punctuation">,</span> <span class="name">usetex</span><span class="operator">=</span><span class="name builtin pseudo">True</span><span class="punctuation">)</span></code></p>
+<p>然后与文字有关的地方都用r”&quot;来引用，比如:</p>
+<p><code class="python"><span class="name">title</span><span class="punctuation">(</span><span class="literal string">r&quot;\TeX\ is Number $\displaystyle\sum_{n=1}^\infty\frac{-e^{i\pi}}{2^n}$!&quot;</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">16</span><span class="punctuation">,</span> <span class="name">color</span><span class="operator">=</span><span class="literal string">'r'</span><span class="punctuation">)</span></code></p>
+</div>
+<div class="section" id="id4">
+<h1><a class="toc-backref" href="#id12">画函数</a></h1>
+<p>plt.plot最简单的形式就是take一组列表数据:</p>
+<p><code class="python"><span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">([</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">])</span></code></p>
+<p>此时plot自动将其认为是y轴的数据，x轴数据自动分配，相当于是:</p>
+<p><code class="python"><span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">([</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">],[</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">])</span></code></p>
+<p>也就是说，对于plot，标准形式是:</p>
+<p><code class="python"><span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">([</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">,</span><span class="literal number integer">4</span><span class="punctuation">],</span> <span class="punctuation">[</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">9</span><span class="punctuation">,</span><span class="literal number integer">16</span><span class="punctuation">])</span></code></p>
+<p>当然，后面可以跟控制表示形式的参数，比如:</p>
+<p><code class="python"><span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">([</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">,</span><span class="literal number integer">4</span><span class="punctuation">],</span> <span class="punctuation">[</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">9</span><span class="punctuation">,</span><span class="literal number integer">16</span><span class="punctuation">],</span> <span class="literal string">'ro'</span><span class="punctuation">)</span></code></p>
+<p>就表示用红色点表示，而不是直线。参数默认是’b-’，表示蓝色直线。</p>
+<p>plot还支持同时在一张图里面绘制多个图形，比如:</p>
+<pre class="code python literal-block">
+<span class="keyword namespace">import</span> <span class="name namespace">matplotlib.pyplot</span> <span class="keyword namespace">as</span> <span class="name namespace">plt</span>
+<span class="name">plt</span><span class="operator">.</span><span class="name">plot</span><span class="punctuation">(</span><span class="name">x1</span><span class="punctuation">,</span> <span class="name">y1</span><span class="punctuation">,</span> <span class="literal string">'r--'</span><span class="punctuation">,</span> <span class="name">x2</span><span class="punctuation">,</span> <span class="name">y2</span><span class="punctuation">,</span> <span class="literal string">'bs'</span><span class="punctuation">,</span> <span class="name">x3</span><span class="punctuation">,</span> <span class="name">y3</span><span class="punctuation">,</span> <span class="literal string">'g^'</span><span class="punctuation">)</span>
+</pre>
+<p>就可以用不同的形式绘制三条曲线。</p>
+</div>
+<div class="section" id="id5">
+<h1><a class="toc-backref" href="#id13">画子图</a></h1>
+<p>用plt.subplot(xxx)，第一个数字表示numrows，第二个表示numcols，第三个表示fignum。fignum的数量最高也就是numrows乘以numcols。
+如果是想产生多个图，每个图包含几个子图，那用figure()来控制图的数量。</p>
+</div>
+<div class="section" id="id6">
+<h1><a class="toc-backref" href="#id14">画直方图</a></h1>
+<p>用函数:</p>
+<p><code class="python"><span class="name">hist</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">,</span> <span class="name">bins</span><span class="operator">=</span><span class="literal number integer">10</span><span class="punctuation">,</span> <span class="name builtin">range</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">normed</span><span class="operator">=</span><span class="name builtin pseudo">False</span><span class="punctuation">,</span> <span class="name">cumulative</span><span class="operator">=</span><span class="name builtin pseudo">False</span><span class="punctuation">,</span> <span class="name">bottom</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">histtype</span><span class="operator">=</span><span class="literal string">'bar'</span><span class="punctuation">,</span> <span class="name">align</span><span class="operator">=</span><span class="literal string">'mid'</span><span class="punctuation">,</span> <span class="name">orientation</span><span class="operator">=</span><span class="literal string">'vertical'</span><span class="punctuation">,</span> <span class="name">rwidth</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">log</span><span class="operator">=</span><span class="name builtin pseudo">False</span><span class="punctuation">,</span> <span class="operator">**</span><span class="name">kwargs</span><span class="punctuation">)</span></code></p>
+<p>具体用法参考
+<a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.hist">hist</a>.</p>
+</div>
+<div class="section" id="id7">
+<h1><a class="toc-backref" href="#id15">画分布图</a></h1>
+<p>例子:
+<code class="python"><span class="name">scatter</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">,</span> <span class="name">y</span><span class="punctuation">,</span> <span class="name">s</span><span class="operator">=</span><span class="literal number integer">20</span><span class="punctuation">,</span> <span class="name">c</span><span class="operator">=</span><span class="literal string">'b'</span><span class="punctuation">,</span> <span class="name">marker</span><span class="operator">=</span><span class="literal string">'o'</span><span class="punctuation">,</span> <span class="name">cmap</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">norm</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">vmin</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">vmax</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">alpha</span><span class="operator">=</span><span class="literal number float">1.0</span><span class="punctuation">,</span> <span class="name">linewidths</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">verts</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span><span class="operator">**</span><span class="name">kwargs</span> <span class="punctuation">)</span></code></p>
+<p>具体参数看
+<a class="reference external" href="http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.scatter">scatter</a> ，唯一一个不是很确定的是s的取值，我曾经估计是s值要和x和y的列表长
+度一样，也就是大概是点的个数？但具体画的时候发现不是这样，点的个数取决于x和y的
+列表长度。有待研究。</p>
+</div>
+<div class="section" id="box-plot">
+<h1><a class="toc-backref" href="#id16">画Box Plot图</a></h1>
+<p>用matplot画Box Plot非常方便，直接用函数:</p>
+<p><code class="python"><span class="name">boxplot</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">,</span> <span class="name">notch</span><span class="operator">=</span><span class="literal number integer">0</span><span class="punctuation">,</span> <span class="name">sym</span><span class="operator">=</span><span class="literal string">'+'</span><span class="punctuation">,</span> <span class="name">vert</span><span class="operator">=</span><span class="literal number integer">1</span><span class="punctuation">,</span> <span class="name">whis</span><span class="operator">=</span><span class="literal number float">1.5</span><span class="punctuation">,</span> <span class="name">positions</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">,</span> <span class="name">widths</span><span class="operator">=</span><span class="name builtin pseudo">None</span><span class="punctuation">)</span></code></p>
+<p>你直接把一组数用x送进去，出来就是Box图。如果你想一个图表示多个Box，也很简单，让xappend多个list，出来的就是这些list的box图。一个例子如下:</p>
+<pre class="code python literal-block">
+<span class="keyword">for</span> <span class="name">attribute</span> <span class="operator word">in</span> <span class="name">iris</span><span class="punctuation">[</span><span class="name builtin">type</span><span class="punctuation">]</span><span class="operator">.</span><span class="name">keys</span><span class="punctuation">():</span>
+    <span class="name builtin">list</span> <span class="operator">=</span> <span class="name">iris</span><span class="punctuation">[</span><span class="name builtin">type</span><span class="punctuation">][</span><span class="name">attribute</span><span class="punctuation">]</span>
+    <span class="name">data</span><span class="operator">.</span><span class="name">append</span><span class="punctuation">(</span><span class="name builtin">list</span><span class="punctuation">)</span>
+    <span class="name">subplot</span><span class="punctuation">(</span><span class="literal number integer">2</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span><span class="name">count</span><span class="punctuation">)</span>
+<span class="name">title</span><span class="punctuation">(</span><span class="literal string">&quot;Boxplot of </span><span class="literal string interpol">%s</span><span class="literal string">&quot;</span> <span class="operator">%</span> <span class="name builtin">type</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">18</span><span class="punctuation">,</span> <span class="name">color</span><span class="operator">=</span><span class="literal string">&quot;red&quot;</span><span class="punctuation">)</span>
+<span class="name">xticks</span><span class="punctuation">(</span><span class="name">arange</span><span class="punctuation">(</span><span class="literal number integer">5</span><span class="punctuation">),(</span><span class="literal string">&quot;&quot;</span><span class="punctuation">,</span><span class="literal string">&quot;Sepal len&quot;</span><span class="punctuation">,</span><span class="literal string">&quot;Sepal wid&quot;</span><span class="punctuation">,</span><span class="literal string">&quot;Petal len&quot;</span><span class="punctuation">,</span><span class="literal string">&quot;Petal wid&quot;</span><span class="punctuation">))</span>
+<span class="name">ylabel</span><span class="punctuation">(</span><span class="literal string">&quot;Value&quot;</span><span class="punctuation">)</span>
+<span class="name">boxplot</span><span class="punctuation">(</span><span class="name">data</span><span class="punctuation">,</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal string">'gd'</span><span class="punctuation">)</span>
+</pre>
+</div>
+<div class="section" id="id8">
+<h1><a class="toc-backref" href="#id17">画幂函数图</a></h1>
+<p>例子:</p>
+<pre class="code python literal-block">
+<span class="keyword namespace">from</span> <span class="name namespace">matplotlib.matlab</span> <span class="keyword namespace">import</span> <span class="operator">*</span>
+
+<span class="name">x</span> <span class="operator">=</span> <span class="name">linspace</span><span class="punctuation">(</span><span class="operator">-</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="literal number integer">4</span><span class="punctuation">,</span> <span class="literal number integer">200</span><span class="punctuation">)</span>
+<span class="name">f1</span> <span class="operator">=</span> <span class="name">power</span><span class="punctuation">(</span><span class="literal number integer">10</span><span class="punctuation">,</span> <span class="name">x</span><span class="punctuation">)</span>
+<span class="name">f2</span> <span class="operator">=</span> <span class="name">power</span><span class="punctuation">(</span><span class="name">e</span><span class="punctuation">,</span> <span class="name">x</span><span class="punctuation">)</span>
+<span class="name">f3</span> <span class="operator">=</span> <span class="name">power</span><span class="punctuation">(</span><span class="literal number integer">2</span><span class="punctuation">,</span> <span class="name">x</span><span class="punctuation">)</span>
+
+<span class="name">plot</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">,</span> <span class="name">f1</span><span class="punctuation">,</span> <span class="literal string">'r'</span><span class="punctuation">,</span> <span class="name">x</span><span class="punctuation">,</span> <span class="name">f2</span><span class="punctuation">,</span> <span class="literal string">'b'</span><span class="punctuation">,</span> <span class="name">x</span><span class="punctuation">,</span> <span class="name">f3</span><span class="punctuation">,</span> <span class="literal string">'g'</span><span class="punctuation">,</span> <span class="name">linewidth</span><span class="operator">=</span><span class="literal number integer">2</span><span class="punctuation">)</span>
+<span class="name">axis</span><span class="punctuation">([</span><span class="operator">-</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="literal number integer">4</span><span class="punctuation">,</span> <span class="operator">-</span><span class="literal number float">0.5</span><span class="punctuation">,</span> <span class="literal number integer">8</span><span class="punctuation">])</span>
+<span class="name">text</span><span class="punctuation">(</span><span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number float">7.5</span><span class="punctuation">,</span> <span class="literal string">r'$10^x$'</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">16</span><span class="punctuation">)</span>
+<span class="name">text</span><span class="punctuation">(</span><span class="literal number float">2.2</span><span class="punctuation">,</span> <span class="literal number float">7.5</span><span class="punctuation">,</span> <span class="literal string">r'$e^x$'</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">16</span><span class="punctuation">)</span>
+<span class="name">text</span><span class="punctuation">(</span><span class="literal number float">3.2</span><span class="punctuation">,</span> <span class="literal number float">7.5</span><span class="punctuation">,</span> <span class="literal string">r'$2^x$'</span><span class="punctuation">,</span> <span class="name">fonsize</span><span class="operator">=</span><span class="literal number integer">16</span><span class="punctuation">)</span>
+<span class="name">title</span><span class="punctuation">(</span><span class="literal string">'A simple example'</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">16</span><span class="punctuation">)</span>
+
+<span class="name">savefig</span><span class="punctuation">(</span><span class="literal string">'power.png'</span><span class="punctuation">,</span> <span class="name">dpi</span><span class="operator">=</span><span class="literal number integer">75</span><span class="punctuation">)</span>
+<span class="name">show</span><span class="punctuation">()</span>
+</pre>
+</div>
+<div class="section" id="id9">
+<h1><a class="toc-backref" href="#id18">显示图形中的数学公式</a></h1>
+<p>Matplotlib 可以支持一部分 TeX 的排版指令，因此用户在绘制含有数学公式的图形时会感到很方便并且可以得到比较满意的显示效果，所需要的仅仅是一些 TeX 的排版知识。下面的这个例子显示了如何在图形的不同位置上, 如坐标轴标签，图形的标题以及图形中适当的位置处，显示数学公式。相应的 Python 程序如下:</p>
+<pre class="code python literal-block">
+<span class="keyword namespace">from</span> <span class="name namespace">matplotlib.matlab</span> <span class="keyword namespace">import</span> <span class="operator">*</span>
+
+<span class="keyword">def</span> <span class="name function">f</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">,</span> <span class="name">c</span><span class="punctuation">):</span>
+    <span class="name">m1</span> <span class="operator">=</span> <span class="name">sin</span><span class="punctuation">(</span><span class="literal number integer">2</span><span class="operator">*</span><span class="name">pi</span><span class="operator">*</span><span class="name">x</span><span class="punctuation">)</span>
+    <span class="name">m2</span> <span class="operator">=</span> <span class="name">exp</span><span class="punctuation">(</span><span class="operator">-</span><span class="name">c</span><span class="operator">*</span><span class="name">x</span><span class="punctuation">)</span>
+    <span class="keyword">return</span> <span class="name">multiply</span><span class="punctuation">(</span><span class="name">m1</span><span class="punctuation">,</span> <span class="name">m2</span><span class="punctuation">)</span>
+
+<span class="name">x</span> <span class="operator">=</span> <span class="name">linspace</span><span class="punctuation">(</span><span class="literal number integer">0</span><span class="punctuation">,</span> <span class="literal number integer">4</span><span class="punctuation">,</span> <span class="literal number integer">100</span><span class="punctuation">)</span>
+<span class="name">sigma</span> <span class="operator">=</span> <span class="literal number float">0.5</span>
+<span class="name">plot</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">,</span> <span class="name">f</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">,</span> <span class="name">sigma</span><span class="punctuation">),</span> <span class="literal string">'r'</span><span class="punctuation">,</span> <span class="name">linewidth</span><span class="operator">=</span><span class="literal number integer">2</span><span class="punctuation">)</span>
+<span class="name">xlabel</span><span class="punctuation">(</span><span class="literal string">r'$\rm{time} \ t$'</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">16</span><span class="punctuation">)</span>
+<span class="name">ylabel</span><span class="punctuation">(</span><span class="literal string">r'$\rm{Amplitude} \ f(x)$'</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">16</span><span class="punctuation">)</span>
+<span class="name">title</span><span class="punctuation">(</span><span class="literal string">r'$f(x) \ \rm{is \ damping \ with} \ x$'</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">16</span><span class="punctuation">)</span>
+<span class="name">text</span><span class="punctuation">(</span><span class="literal number float">2.0</span><span class="punctuation">,</span> <span class="literal number float">0.5</span><span class="punctuation">,</span> <span class="literal string">r'$f(x) = \rm{sin}(2 \pi x^2) e^{\sigma x}$'</span><span class="punctuation">,</span> <span class="name">fontsize</span><span class="operator">=</span><span class="literal number integer">20</span><span class="punctuation">)</span>
+<span class="name">savefig</span><span class="punctuation">(</span><span class="literal string">'latex.png'</span><span class="punctuation">,</span> <span class="name">dpi</span><span class="operator">=</span><span class="literal number integer">75</span><span class="punctuation">)</span>
+<span class="name">show</span><span class="punctuation">()</span>
+</pre>
+</div>
+</div>
+</body>
+</html>
