@@ -147,7 +147,11 @@ plot还支持同时在一张图里面绘制多个图形，比如:
 
 用函数:
 
-:python:`hist(x, bins=10, range=None, normed=False, cumulative=False, bottom=None, histtype='bar', align='mid', orientation='vertical', rwidth=None, log=False, **kwargs)`
+.. code-block:: python
+
+    hist(\
+        x, bins=10, range=None, normed=False, cumulative=False, bottom=None, \
+        histtype='bar', align='mid', orientation='vertical', rwidth=None, log=False, **kwargs)
 
 具体用法参考
 `hist
@@ -157,7 +161,11 @@ plot还支持同时在一张图里面绘制多个图形，比如:
 =========
 
 例子:
-:python:`scatter(x, y, s=20, c='b', marker='o', cmap=None, norm=None, vmin=None, vmax=None, alpha=1.0, linewidths=None, verts=None,**kwargs )`
+
+.. code-block:: python
+
+    scatter(x, y, s=20, c='b', marker='o', cmap=None, norm=None, vmin=None, \
+        vmax=None, alpha=1.0, linewidths=None, verts=None,**kwargs )
 
 具体参数看
 `scatter
