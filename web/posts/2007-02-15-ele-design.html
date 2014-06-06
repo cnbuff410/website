@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>电子设计竞赛的回忆</title>
+<meta name="author" content="cnbuff410" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/*
+:Author: Kun Li
+:Contact: likunarmstrong@gmail.com
+:Copyright: This stylesheet has been placed in the public domain.
+
+Stylesheet for use with Docutils for my blog.
+*/
+
+table.footnote {
+  border-left: solid 1px #F2FFFC;
+  margin-left: 1px }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: #F2FFFC }
+
+/* Override the css set by grayscale.css */
+ul {
+    list-style-type: disc;
+}
+
+</style>
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">电子设计竞赛的回忆</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>cnbuff410</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:likunarmstrong&#37;&#52;&#48;gmail&#46;com">likunarmstrong<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
+</tbody>
+</table>
+<p>谈起电子设计,确实是一段让人难忘的经历.虽然我得奖经历也不少,但是没有那次比赛能比这次比赛让我的收获大.从4月的校赛开始到9月的全国赛结束,这段时间让我觉得这是大学四年真正没有白费的时间.整个暑假在实验室的辛勤劳动,换来了全省第一名以及全国一等奖,不管最后结果如何,总算是不遗憾了.</p>
+<p>说起校赛,因为对模拟电路数字电路联调经验的缺乏,差点把电源给烧了,也差点被唰了下去,幸亏指导老师易老师沉思了几天之后,终于作出让我们留下的英明决定-_-,要不然我早就跳楼自尽了,嘿嘿.</p>
+<p>之后就是暑假的培训阶段,老师把各个队都分方向进行了训练,事实证明还是比较准确的.我只所以没说完全准确是因为最终还是有队没有作自己方向的题目.当然我始终认为这是因为他们队一个小伙的人品问题,嘿嘿.</p>
+<p>我在里面负责电路板和可编程逻辑器件以及最后文档的工作,虽然最后因为采用了高档mcu没有用上可编程器件,但是至少这期间我又学习了很多可编程的知识,至少从可编程方面讲,cpld还是fpga我都是实验室最强的.很多做电路板的朋友抱怨这是体力活,我可从来没有这样觉得.我觉得看着一个板子从你手下一步步诞生,是一件很有趣的事情,而且电路板是需要经验的,越早接触越好,像编程这些以后都可以再练习.当最后几天老师让做dds的板子时,说实话自己心里面压力很大,整个实验室就靠这个板子活(后来比赛有3个队用了我这个板子),要是再做不好就无颜见江东父老了.还好最后挺了过去,作出来的板子只是小小改动一下效果就已经非常好了,甚至都不用加滤波器.</p>
+<p>说起文档,我倒觉得也没啥,就是资料整理和适当吹捧.主要是以前写稿件写习惯了,现在不能以通俗易懂的手法来写,而要用科技文献的手法写,想当初微型计算机编辑苦口婆心教导我的规矩现在都用上不,很是让我不适应了好一会.不过没有关系,毕竟好几次比赛都参与过文档写作,好歹还是写了很多.可惜最后一天的时候脑子已经发昏了,(4天3夜睡了8个小时),导致介绍系统的时候顺序有点混乱,评委是专家么,没事,应该能看懂.</p>
+<p>说起来我们比赛那4天3夜时间没有安排好,主要是害怕多个板子容易出问题,第三天又重新焊接了一块,把所有部分都焊接在一个板子上去了,结果第四天才开始测试系统数据和定标,编程的小伙体力差点已经跟不上了,直到晚上8点截至时间才把系统做完,当时紧张的……如果不焊接那个板子,我们至少多出一天时间来完善系统.嘿嘿,拿sony杯的可能性该有多大啊.现在呢,呵呵,也就希望得个全国一等了.虽然自己拿过几次全国奖,但是相比而言还是对这个的全国奖最为看重.因为含金量最高么.</p>
+<p>比赛完休息几天就开始测试.测试那天才是虚惊一场,我们忘记带转接头了,我立马回学校拿,来回花了40分钟时间,正好在我出去时两个队友检查系统发现东西出不来,只有一个部件一个部件排查,最后才发现有一个芯片坏了.如果不是忘记带转接头,这次就算玩完,啥都没有,也没有这么多时间去检查了,所以确实很幸运.最后测试下来,所有功能都很完美,比第二名得测试分高了近20分(满分是100不是1000哦),全省第一名轻松拿到。最后作品报送全国评奖，获得一等奖。</p>
+<p>参加这个比赛,得奖是其次，关键是让我认识了很多朋友.说起来大学真是特别幸运,搞挑战杯认识一堆子朋友,搞ic认识庞,杨两大高手,搞电子设计更是认识很多高手,有些时候,珍贵的友谊也是要看机遇的.</p>
+<p>最后谈谈准备比赛期间的人和事.</p>
+<p>代xx,男,今年22岁,皮肤白皙,一头飘逸的中长发,是居家女士之最爱.由于之前没有任何基础,就让他选择搞模拟电子.不过还好,没有让各位观众失望,圆满完成了本职工作后还抽空帮我看了看文档,鄙人决定以白水泡摸来款待表示感谢.其人好玩,曾经在实验室狂看猜猜猜,让我多次产生杀死他的冲动.当然此人如今还保持单身,如果有能做西红柿抄蛋的单身女性有意的请直接联系我,我帮你们撮合,嘿嘿.请注意,脸上有几个雀斑最好^_^</p>
+<p>周xx,性别不明,估计是男的,较高,偏瘦,为人也好玩,但是玩的方向不同.他最大的乐趣就是把焊锡做成围棋并给我们炫耀.其自称飞线王并多次表演飞线绝技,每一次都让我想起了东方不败的绣花针.其和代xx好起哄,喜欢以贬低别人为乐趣,我就是深刻的受害者.发展倒最后只要他俩一犯错误就说因为我在旁边,而且多次贬低我的人品,所以本来我还欠周xx两顿烤肉,已经决定不还了</p>
+<p>徐xx,不是我们队的,但是是我对面那个队的,好软件与骂人,其骂人功夫深不可测,而且缠人本事比苍蝇还苍蝇比唐僧还唐僧,其在实验室两个月,每三句话必带上我的名字,并对我进行人身攻击.我多次武力教育无效后决定放弃对其的教育改造,每天默默忍受其大嘴的不断奚落,一度让我怀疑丫进实验室的目的是为了攻击我而不是参加比赛.为人好胜心极强,所以骂队友是其家常便饭.让人恐怖的是在我威逼利诱无效之下他和我很可能研究生阶段同在一个屋檐下,让我极度怀疑其读研究生的目的很可能是继续追杀我的生涯.5555…….我估计可能是那天和他单挑篮球菜了他50:0,所以一直对我怀恨在心.</p>
+<p>还有好多朋友,通院的传奇人物,全院第一,理科思维极强的朱xx;为人热心老实的梁xx;身体单薄还喜欢成天找我单挑打架的杜xx……太多了,算上别的系的说都说不完,我手已经酸了,就不继续写了.</p>
+</div>
+</body>
+</html>

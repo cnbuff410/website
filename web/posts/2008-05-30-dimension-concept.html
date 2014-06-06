@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>谈谈维度—数学空间和物理时空</title>
+<meta name="author" content="cnbuff410" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/*
+:Author: Kun Li
+:Contact: likunarmstrong@gmail.com
+:Copyright: This stylesheet has been placed in the public domain.
+
+Stylesheet for use with Docutils for my blog.
+*/
+
+table.footnote {
+  border-left: solid 1px #F2FFFC;
+  margin-left: 1px }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: #F2FFFC }
+
+</style>
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">谈谈维度—数学空间和物理时空</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>cnbuff410</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:likunarmstrong&#37;&#52;&#48;gmail&#46;com">likunarmstrong<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
+</tbody>
+</table>
+<p>很小的时候，我就喜欢读科幻小说，对那些宇宙啊，外星人啊什么的特感兴趣，听到霍金，凡尔纳这些人的名字就两眼放光。那时候，很多文章都喜欢和空间，多维什么的扯上关系，玄乎啊，经常看得我一愣一愣的，不过当时还小，也没有仔细多想。</p>
+<p>后来上了中学，学习了基本数学，知道了一些东西，比如点，线，面的关系。这个，算是空间维度的原始解释吧，那就是，某种描述事物的名词。从这里，就可以引申出不同维数代表的不同意义。再到后来，开始搞计算机了，也就对这些东西都淡忘了。直到去年看了刘慈欣的三体，硬是在小说末尾添加了对维度的描述，让我发现，原来到现在，作家们也不会放过这个永远不会变成冷饭的玩意。前段时间在看“什么是数学”，里面有一段很有趣的对维数的描述，才勾起我对这玩意的一点记忆。</p>
+<p>先从最简单的初中概念谈起吧。比如我们说点，那就是0维。或者，描述更严密一些，就是一个点，或者任何有限点集，都是0维。一些科普文章说，0维就是什么都没有，完全不准确，明明有点啊，哪能什么都没有，就算是真正意义上的点，什么都不包含的纯粹的点，那也是点呗，点是实际存在的。还有的文章说它是奇点，甚至用“黑洞”来解释它，这更不准确了，首先奇点不见得是0维的，其次奇点物质能级无限大，而普通点根本不具有这个特性（当然０维事物能够成为黑洞，只要它有足够质量）。所以，咱们没必要绕这么多概念。更严密的反驳，后面会写到。</p>
+<p>然后是一维，这个好说，在我们的世界里，一维就是一条线，一条无限长的，能够容纳无限个点的线。一维所表征的特征呢，就是长度。继续想象，假设我们把这条线多赋予一个特征，那就是无线延伸的宽度，那么就变成了面，也就是二维。同理可知，加一个高度，就成三维了。</p>
+<p>说到这里，似乎都是理所当然的事情。初中就知道的东西，拿来重复干嘛。问题在于，我们以上的定义，都是基于“常识”，或者说是“显而易见”的现象，而不是严密而明确的定义。比如我现在问你，数轴上，有理数表示的全体点集，是什么维数？有理数集是稠密的，所以，可能是和直线一样是一维的；但换一个角度想，任何一对有理点之间都有无理点，这不和任意两点间的有无理点的有限点集差不多么？</p>
+<p>所以，我们需要试着去观察一些更深入的性质。</p>
+<p>1912年，庞加莱提出了这样一个定义：首先我们看，直线是一维的，因为我们可以通过剪开它的一个点（零维），使其上任意两点分开；而平面是二维的，因为要分开平面上的一对点，我们必须切开整条一维的闭曲线；同理，来到三维空间，我们必须切开一个面，才能分开立体空间中的一对点。</p>
+<p>以数学语言来归纳，就是，<strong>一个空间，如果通过去掉一个（n-1）维的子集的办法，能把它的任意两点分开；而去掉较低维德子集时，不一定能做到，就称这个空间是N维的。</strong></p>
+<p>然后我们回过头来，看看网上那些科普文章对于零维的错误描述。我们说，任何有限点集都有这样一个性质，每一点都能被包围在一个任意小的空间区域内，且使区域边界上不包含该集合的点。换句话说，零维不等于“什么都没有”，你能用什么区域来包含“什么都没有”？严格上讲，“什么都没有”有维度，那是-1维。所以0维的严密定义应该是：</p>
+<p>一个点集S，如果它不是-1维的（至少有一个点），S每一点都能被包围在一个任意小的空间区域内，且使区域边界上不包含该集合的点（也就是区域边界和S交集是-1维），那么称S是0维。</p>
+<p>按照这个思路往下走，定义就很顺利成章了：<strong>一个点集S，如果它不是0维和-1维的，S每一点都能被包围在一个任意小的空间区域内，且区域边界和S交集是0维，那么称S是1维。2，3，4，5，6…….维的定义可以顺推。</strong></p>
+<p>说到这里，似乎一切都迎刃而解了，我们有感性的对维度的认识，也有理性的对维度的分析，数学上，维度的概念得到了完美的归纳。</p>
+<p>可惜这只是数学上。数学上对维的定义，集中在集的维数，或者说是空间的维数，的理论表达。而无论是科幻小说，还是科技新闻，我们平时生活中接触的N维，已经不仅仅限于“空间”的范围了。因为纯空间的描述，是无法揭示我们这个世界的现象的，人们开始引入新的度量，来试图诠释真实世界中更高维的空间，这就是时间。</p>
+<p>时间和空间，本质上是两个完全不同的东西，但是却不得不因为需要描述事物时间的关系而建立起将两者混用的“完美坐标系”。怎么来理解这个“混用”中的“完全不同”呢？我想，时间旅行——虽然被大部分当代物理学家认为是不可能的——也许是最容易让人理解的东西。</p>
+<p>举个例子，传统意义上，我们周围的空间有三维（上下，前后，左右）。我们可以往这三维任意移动（可以借助现有工具），没有问题，只是比如你一直沿某一维走，过了一段时间，你都不会停在原地点，换句话说，你的空间坐标肯定会变化。在这个时候，时间和空间是紧密联系的，时间的变化和空间变化是一致的。</p>
+<p>而当我们提到“时间旅行”时——请注意，我举例子，不代表我肯定其存在性——一切都变了。假如我们现在在某个空间位置A，通过时间旅行，我们可以在沿着一个方向运动一段时间后，回到这个位置A。更玄乎的，是我们可以在更早的某个时刻点，回到这个相同的位置。通过空间虫洞。</p>
+<p>霍金一直以量子力学效应为武器，来扑灭所有时间旅行幻想家的希望，在这里，我也不想对这个问题有太多见解，直接看宇宙简史似乎更为科学一些。上面一段的目的，是想告诉各位两个性质：</p>
+<p>1 在物理学上，引入时间当作第四维
+2 时间只能超某个方向前进，没有负向运动。</p>
+<p>好了，到这里，大家都应该明白，数学上维度的定义，已经不能解释物理上的维度了。当然，物理上所有高维的概念，都是通过严密的数学推导，只是对于非物理专业人士来讲，不需要，也很难理解这个具体的推导过程了。</p>
+<p>解释高维时空，对于三维空间中的人们来说，总是很困难的。就比如生活在二维平面世界的生命，它们的世界里只有长和宽，根本无法理解第三维——“高” 这一维。因此，它们对三维世界的感知只限于三维物体在平面世界的投影，或者三维物体与平面世界的接触面，用二维的眼光来打量这些面，永远不可能将它们拼成一个三维整体。</p>
+<p>所以最后，我想用一个二维平面的例子，来解释时间这个第四维度，对我们三维空间的影响。假设，我们有一个二维的弯曲空间，上面有一群二维的人居住。然后，这个弯曲平面上有AB两个点，我们可爱的二维人儿们呀，想从A点走到B点，问，怎么走最快？</p>
+<p>小学生们纷纷举手回答：两点之间直线距离最短。</p>
+<p>正确。但是我们继续想象，假设这个平面上有两个小坑（二维平面可以有无数小坑），分别刚好就在A和B两个位置。因为某个原因，它们越来越深，越来越深（想象水井），不仅深了，还朝着对方弯曲，最后，极限情况下，碰到了一起。这就是二维空间的“虫洞”。此时，平面上的人，就有两种选择了，一种是笔直按一个方向从A走向B，一种是通过“外面的空间”，虫洞，从A走向B。而当平面是类似于U这样弯曲的时候，很明显，虫洞，这个外部的空间，提供了一条超级捷径给二维人们，这是一条在他们自己空间中永远也找不到的捷径。</p>
+<p>人类所幻想的时间机器，利用的就是这个“外面的空间”。</p>
+</div>
+</body>
+</html>

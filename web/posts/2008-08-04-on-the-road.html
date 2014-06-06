@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>在路上</title>
+<meta name="author" content="cnbuff410" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/*
+:Author: Kun Li
+:Contact: likunarmstrong@gmail.com
+:Copyright: This stylesheet has been placed in the public domain.
+
+Stylesheet for use with Docutils for my blog.
+*/
+
+table.footnote {
+  border-left: solid 1px #F2FFFC;
+  margin-left: 1px }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: #F2FFFC }
+
+</style>
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">在路上</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>cnbuff410</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:likunarmstrong&#37;&#52;&#48;gmail&#46;com">likunarmstrong<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
+</tbody>
+</table>
+<p>用一段话形容一下这半年的日子，那就是，生活，像流水一样静静地往前流淌着。出海口，就在前方，可是似乎还是遥不可及。虽然这是一条美丽的河流，每天沐浴在阳光和欢声笑语之中，可是眼前平凡的幸福总不能代替对波澜壮阔的大海的憧憬。</p>
+<p>我的某个聊天工具的个人说明里面是这样一段话：无论我们在哪里活着，无论我们是谁，我们都会受到边界的束缚–有些是真实的，有些是想象的。在这些边界之内，我们中许多人满足地活着，另外一些人却是迫不得已。然而，我们之中有些人必须去挣脱，去突破这些边界，哪怕在边界的另一边是恐惧和未知。</p>
+<p>2008年8月6日，我将面临这样的恐惧，未知，和挑战。</p>
+<p>我曾经很多次做自我剖析，认为自己从小就好运陪伴，并没有经历什么跌宕的人生，就发展到了如今这个还算不怕挨饿的状态。初中整个读书阶段，都是为了父母而努力，不是为了自己；高中玩了一年半，曾被老师评价为上“二本线”都比较危险，终于在一次家长访谈时看到父母失望的眼神，而翻然醒悟，奋斗一年；到了大学，终于找到了自己的兴趣和特点所在，于是在一个个现实的目标下，在朋友们的促进和鼓励下前进。我的24年人生，就像一匹被牵引的马，虽然看起来越跑越快，但总归是处于被扬鞭状态，去寻找不知道终点是什么的终点，也不知道离我的理想是越来越近，还是越来越远。</p>
+<p>我扔出了一枚硬币，却无法选择正反面。</p>
+<p>如果就此读完研究生，安安稳稳在国内找一个工作，本可以一步一步踏实上扬，过上所谓白领甚至金领的生活。但我的性格，就是对世界上千奇百怪五花八门的生活和文化有着发自内心的好奇和探索欲望。我不是一个喜欢随便旅游的人，但却想环游世界，和心爱的人一起，策马扬帆，游埃及，观铁塔，体验巴厘岛的浪漫，感受大峡谷的狂野，去体验这个广博的世界给我们展现的丰富多彩。而现在，我在一个笼子里，虽然可以每天都有人喂食，不愁冷暖，但反而离自己真正的梦想渐行渐远。幸亏有一个人，在我可能做出继续这样生活决定的时候点醒了我，让我年轻的内心深处，再一次产生那么一种欲望，我要飞出笼子，敞开胸怀，去追逐，去体验，哪怕以后可能非常困难的自己觅食，哪怕可能经历暴风骤雨，哪怕会被笼子里的其他鸟儿所嘲笑。天生一个仙人洞，无限风光在险峰，若不历奇险，何以得“暮色苍茫看劲松”的奇遇？我还很年轻，即便这是一条错误的道路，即便今后遇到无法预想的挫折与困难，伤痛与迷惑，我都会为此庆祝。在我这种温室里长大的人看来，人生，应该是在失败中站起来，在打击中成长，而不是躲在幸福安定的小生活中，偏安一隅，这样，永远无法看到色彩斑斓的世界。</p>
+<p>无数的人曾经问过这样一个问题：什么是幸福？什么是美好的人生？这样的问题，其实一千个人有一千个答案。有人喜欢公园小区舒适的生活，有人喜欢浪迹四方的自由，有人喜欢手握钱权的成就，也有人梦想某一天在蓝天碧海之间体验鲲鹏击浪的豪情。很多人因为缘分走在了一起，然后他们又因为各自不同的理想和道路，各自分飞，追逐属于自己的太阳。小学，中学，大学……我们每一天都在面临新的征程，不需要千言万语，不需要泪光闪烁，把祝福珍藏在心里，各自迎接自己的挑战，把脚印伸展到全世界。</p>
+<p>回首从前，我最大的幸运，就是认识了一批在我生命中不只是过客的人。他们在我一路走来的历程中，有人分享我的喜悦，有人分担我的痛苦和泪水，有人在我堕落的时候拉我上岸，有人在我迷茫时及时点醒，有人把我伤害，有人被我伤害。</p>
+<p>忘不了高中和谐融洽犹如一家人一样的南洋群众；忘不了我的大学四年，永远的西电0211班；忘不了天堂205室，和你们一起度过的1460个日日夜夜，一起八卦，一起CS，一起看电影，一起为了某个问题而争得面红耳赤引起全楼公愤；忘不了短暂研究生生涯的124群众们，以大师为名经常性调侃我，和你们一起的日子很短暂，却很开心；忘不了我倾注了N年心血的BX战队，亲爱的忠哥，最好的徒弟Jay.Star，还有nakata，猪猪，等等等等，[BX]-lk虽然很早就离开了你们，但一直把你们放在心里。</p>
+<p>忘不了一起奋斗电子设计的队友，三天三夜的不眠和背后半年的训练，让我们一起站到全国的尖峰；忘不了一起奋斗嵌入式竞赛的一群哥们，思宏的team，锦辉的team，大鱼的team，xk的team，还有我那两个耿直有趣偶尔让我吹胡子瞪眼的队友；忘不了基本称霸xd业余半场篮球的队友们，无敌的老薛，自恋的翁败，日夜陪我1v1斗牛的小青青，和lz，yds，yn等成天一起泡球场的人；忘不了image lab一帮可爱的人，女生帮，帮主，和我这个专吃大将军，你们的孩子，我这个教父头衔是都预订了；忘不了回雅安半年中认识的一帮子球友，大瘪瘪，宅*为什么脚受伤的总是我*男等；</p>
+<p>忘不了高中三年每天和我夜聊的小弟，虽然你走的是完全另一条道路，但我永远是你的好朋友，我等着你的成功；忘不了当妈的大胖子和当爹的苍蝇，没有你们，就没有我多姿多彩的大学四年，以后归国第一站我优先考虑深圳。</p>
+<p>还有风萧，蝈蝈师兄，天才帮帮主，和很多没有列出来的朋友。你们都是我人生最宝贵的财富，也许我上面的一些人，我已经很少联系，但这纯粹是懒惰的性格使然，请相信，我爱你们，所有人。我们永远是好朋友。</p>
+<p>再见，我的家乡，我的朋友。</p>
+</div>
+</body>
+</html>

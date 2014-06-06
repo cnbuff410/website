@@ -13,3 +13,8 @@ table.footnote {
 a.toc-backref {
   text-decoration: none ;
   color: #F2FFFC }
+
+/* Override the css set by grayscale.css */
+ul {
+    list-style-type: disc;
+}

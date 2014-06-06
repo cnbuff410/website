@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>找Google实习的过程</title>
+<meta name="author" content="cnbuff410" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/*
+:Author: Kun Li
+:Contact: likunarmstrong@gmail.com
+:Copyright: This stylesheet has been placed in the public domain.
+
+Stylesheet for use with Docutils for my blog.
+*/
+
+table.footnote {
+  border-left: solid 1px #F2FFFC;
+  margin-left: 1px }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: #F2FFFC }
+
+/* Override the css set by grayscale.css */
+ul {
+    list-style-type: disc;
+}
+
+</style>
+</head>
+<body>
+<div class="document" id="google">
+<h1 class="title">找Google实习的过程</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>cnbuff410</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:likunarmstrong&#37;&#52;&#48;gmail&#46;com">likunarmstrong<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
+</tbody>
+</table>
+<p>这次拿到Google总部的实习offer挺幸运的。每年都有很多中国学生申请他家的实习，不管是总部还是分部，我估摸着我可以把这段经历写出来，算是一个回忆，也给后面的学弟学妹一个参考。</p>
+<p>首先想对以后希望去的朋友说的是，因为Google应该是计算机行业最顶级的实习待遇了，所以外面很多人传他家难度大，不好进，美国名校的学校找有优势。我想说，这不是让你退缩的理由。我看了一下今年实习的名单，确实MSBHCP这几个学校很有优势，学生很多，但后面的不错的学校也都不少人，比如Gatech, Purdue, UC其他系列等等。我们学校CS也就30出头的排名，除我以外还去了一个本科生一个研究生。所以你有想法，就去试，大家都要经历技术面和项目面，有实力就可能进，用实力说话。</p>
+<p>第二个需要提到的，就是找实习，要趁早。Google今年有几百个实习坑，基本上80%已经在三月之前就定了，我就因为这个吃了亏，差点没等到match的host。所以如果申请他家，一定要上一年12月左右就开始准备。</p>
+<p>下面讲讲具体的经历吧。</p>
+<p>去年有过实习的打算，后来因为思乡之情过于严重，还是决定暑假回家了，实习留到今年。不过由于我没心没肺的性格，基本把这事给忘了。直到今年三月的时候，看到学校的广告，说很多实习公司来校招了，才猛然一惊，该找实习了。赶紧找到老板报告有暑假实习的想法。老板一句话：实习可以，但除了Google或者Apple，别的最好别去（这里没有看不起其他公司的意思，这个领域软件有MS, FB, IBM, Intel, amazon都是适合我背景的好公司，估摸着老板的意思是这两个公司是把创新性，研究和开发结合比较好的。如果实习只是开发，不是研究，对锻炼自己的能力也有一定限制）。</p>
+<p>插一句，Apple全程都没有理我。我问了一下我们学校以前去实习的人，似乎基本都是有内部推荐才会有机会面试。如果内部推荐很Strong，面试就是走流程。</p>
+<p>回来继续讲Google。老板如此放话了，我也就只能照做。赶紧准备简历，材料，填写Ｇ家和Ａ家的申请表格之类的。我的简历也没有特意包装，没有任何让什么简历网站之类的帮忙改，随便网上找了几个模板综合一下就出来了。回头想想这样其实很不好，每个美国学校都有career service服务，如果你对简历的格式不放心，可以找他们看看，都是免费的，水平还很专业。我的内容写得不多，就是个人信息，RA和以前在中科院实习的经历，然后就是几篇论文。有一篇是很好会议的Best paper nomination，估计这个有点加分。然后就是我本科的一些全国竞赛奖了。这个估计作用不大，但聊胜于无。我建议大家简历别写太复杂，就是publication和各种竞赛奖，能说明你这个人还不错，就行了，过HR的简历筛选关问题不大。另外，我知道很多人喜欢在简历里面夸张，什么语言都精通，什么架构都熟悉。最好别这么干，Google里面牛人众多，他会针对你的简历去选精通的人面试，你要是不熟悉还说精通，一问就fail了。比如我对C++不熟悉，对C和Python熟，我就照实写了。</p>
+<p>我搞完这些之后已经三月初，因为要忙一篇Sensys的paper，所以投出去就没管了，干自己的活。没过几天，就收到Google的回信，说简历过了，准备进入技术面试。这个时候，我对这些面试流程还一无所知，赶紧去网上查。网上有两个特别好的参考网站，一个是Career Cup，上面有各大公司的最新面试题集锦。一个是传说中的mitbbs买买提，上面有一个Job hunting版，都是大家介绍经验的，也有一些解题交流。这两个网站让我从实习小白变成了高中生水平，基本上知道面试是怎么回事了。简单说，就是一开始有两轮技术面试，每个45分钟，面试官出算法题，你写程序，分析复杂度，改进复杂度，等等。每个面试都会给你share一个Google Doc，然后面试官会在上面写题目，然后你在上面直接写程序。过了这两轮面试，就进入了Google的Talent pool，你的简历会放在这个pool里面，让所有group挑选，这就是Host match阶段。任何group发现有很match的candidate了，就会主动联系他，然后进行项目面试。项目面试就千奇百怪了，没有具体的形式，可以是他们给你介绍他们的产品，可以是你介绍你以前的项目，可以是再给你出一些更难的算法题打击你，可以是描述一个系统让你做基本的框架实现。总之很多样，取决于每个组的偏好。</p>
+<p>我的两轮技术面是在某周周一，距离我受到通知只有两周。我之前忙Paper，没有进行任何准备，收到邮件就慌了。以前本科看过一些算法知识，到现在丢了很久。基本的数据结构，比如hash阿树阿这些我都熟，各种排序，图算法，我也能说一些，至于其他动态规划，A star，红黑树这些稍微高级的，我就全忘了。平时根本就没用到这些东西。概念都说不上来，更别说写了。我赶紧开始规划，不管再忙，每天抽两个小时时间看算法，写写程序，提前练练。然后是面试前的一天一整天都去看看别人分享的题，大概了解一下思路。实际上到了面试当天，真让我现场写KMP或者红黑树，我还是写不出来，肯定一堆Bug，毕竟算法涵盖面广，我复习时间不超过40个小时。但也就赶鸭子上架，硬撑了。心里面就盘算着，反正我就这样，爱要不要。阿Q一下还是可以的:) 实际上从我的面试题看，我这个策略很不错，根本没有考非常高级的算法，我复习的都比较对点子，还一点都没有耽误写Paper:)</p>
+<p>终于到了技术面的那天。我逃了课，放松了一上午。到规定时间，他们就打过来了，还是很准时的。第一轮的面试官英语很好，估计是本国人，自我介绍说是Chrome组的。一上来我就问，能不能用python写程序?反正都是考算法思路，用c麻烦一些。他说没问题，我一下子心就镇定很多了。然后他就开始在Google Doc里面出题。出于保密协议，我不方便直接透露原题，但可以说的是，第一个面试官的题都不是那种特别难的，但需要动脑子改进的。这里要说到另一个经验，就是面试官问你什么题，你通常会马上想到一个最简单也最麻烦的方法，别犹豫，马上说出来，然后再讨论怎么改进。如果你闷着头自己去想最优解，人家压根就不知道你在干嘛，说不定还以为你不知道怎么解呢。其中一道题，我就是从最初的暴力解法O(N^3)说给他听，他问有改进方法没，我想了想搞了一个O(N^2)的，他比较满意，又问我还能不能进一步改进。我想了一分钟左右没说话，他就过了。这道题我面试完马上就想到了O(NlogN)的解法了，可惜晚了。不过从这个过程看，我没有栽在这里，说明中间的交流过程他还是比较满意的。还有就是，你提出用什么语言，就一定要熟悉这个语言的特性。你的面试官是针对你的简历选的，你说你熟悉什么，他就会熟悉什么。比如他的最后一道题就是和python的特性有关，不用写程序。但如果你之前没有用过这个特性，说不定就不知道了。这次面试是45分钟左右，感觉还不错，我写程序也写得很快，中间只有一个程序有一个Bug。</p>
+<p>第一轮面完之后休息了一下，继续第二轮。这一次听口音是一个印度人，他介绍完他是哪个组之后我就朦了，根本听不懂……我到现在也不知道他是哪个组的。顺带说一句，我真的真的真的不适应印度英语……面试的过程更加痛苦，他说每一道题我都要问三遍以上才能知道他到底想问什么，其中有一道图像算法的问题，我一直都没听懂，sorry了几次之后，他不耐烦就过了。我的感觉一下变得很差，心想估计栽这里了。到最后一道题的时候，我脑子已经基本都是空白了，连蒙带猜估计了一下题意，就马上开始写代码了，而且用的没有任何优化的算法……他中间甚至没怎么看懂，重复问了我一下是不是理解了题意。我写完之后，他总算看懂了，回了一句：这不就是brute force么。我想，完了，连最后一题也搞砸了。就在他准备鸣金收兵的时候，当时不知道怎么回事，脑子突然灵光闪现，一下子就想到了针对这个问题的O(n)算法，估计也是最优的。马上给他说，不好意思，我有一个新的想法，能说一下么？他犹豫了一下，说行。我立刻巴拉巴拉边说边在GDoc里面画，尽量快地把我的意思体现出来。说到最后他也理解了，说，我喜欢这个解法。我后来琢磨，我能过这两轮，或者就是第一轮的那位哥们分数给力，或者就是第二轮的这个最终解法救了我。</p>
+<p>所以总结下来，Google的实习技术面试没有工作技术面试那么难，不会有很多高级算法，主要还是基本的算法素质和基础知识，准备的时候针对这些就行了。当然基础知识有很多考法，比如理想情况怎么办，内存不够怎么办，多台机器同时跑怎么办，等等。你需要对基础知识熟练到能应付扩展情况，并且如果有新的情况了，要会分析新的复杂度。其他就看运气了。</p>
+<p>技术面之后，我以为希望不大，所以也没太放在心上，想着不行就留校继续当RA吧。在这种期望不高的情况下，有时候真会有惊喜出来。两周后，我正在写paper，突然收到HR的信，说我通过了技术面试，进入Host match阶段。我当时特别高兴，感觉就像已经拿offer了，还在twitter上发了一个更新，估计很多朋友还能记得。因为按以前经验看，进入这个阶段的人90%都能拿到offer。没想到正是因为我面得晚，结果出得也晚，大多数组已经都招满了。我又等了两周，一直没有组联系我，我发邮件问HR，回复是他们在尽量找，但确实不保证能找到。我的心情从充满希望又回落到了充满失望，想着，估计我要成为悲剧的10%中的人了。</p>
+<p>最后阴差阳错，上天确实很眷顾我，有一个和我背景比较match的组最后还是面试了我。我对我之前的项目阐述地很好，毕竟都是自己做的。项目的重要性，创新性也都突出介绍了。估计我的老板他们的推荐信也很给力，面完的第三天就决定给我offer了。从几乎出局到最终达成，locate到做mobile的组，我喜欢的方向，mentor是一个ACM Fellow，本领域的大牛，Google总部。对我来说，这是一个Dream offer，完美的结局。</p>
+<p>整体流程就是这样的。我不是一个算法大牛，这我的朋友都知道。我只是因为</p>
+<ol class="arabic simple">
+<li>正确的时间高效作了复习工作</li>
+<li>在老板的严苛要求下做了一些有意义的项目</li>
+<li>未来Mentor的帮助和信任</li>
+<li>一直以来都不错的狗屎运</li>
+</ol>
+<p>等因素才拿到这个实习offer。我将来工作的终极目标并不是去Google，但Google的实习能带给我很多新的东西，新的朋友，新的视野，新的能力。我感谢那几个不知道名字的UWashiton和Gatech的哥们一直在论坛上交流和相互打气，感谢我的老板，感谢我的师弟师妹在我最忙的时候take了很多我的工作。</p>
+</div>
+</body>
+</html>

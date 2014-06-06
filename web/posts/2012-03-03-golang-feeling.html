@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>Go语言</title>
+<meta name="author" content="cnbuff410" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/*
+:Author: Kun Li
+:Contact: likunarmstrong@gmail.com
+:Copyright: This stylesheet has been placed in the public domain.
+
+Stylesheet for use with Docutils for my blog.
+*/
+
+table.footnote {
+  border-left: solid 1px #F2FFFC;
+  margin-left: 1px }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: #F2FFFC }
+
+/* Override the css set by grayscale.css */
+ul {
+    list-style-type: disc;
+}
+
+</style>
+</head>
+<body>
+<div class="document" id="go">
+<h1 class="title">Go语言</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>cnbuff410</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:likunarmstrong&#37;&#52;&#48;gmail&#46;com">likunarmstrong<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
+</tbody>
+</table>
+<p>算下来接触Go也有四个多月了，断断续续写了一些东西，这里纪录一下心得吧。先大概说下为什么用Go。我是一个对语言有洁癖的人，曾经是一个c+Python的坚定呐喊者，最常说的一句话就是，只要熟练这两种，什么情况都能应付，根本不用Java和C++(纯指我所在的领域）。当然后来做Android开发，也就不得不用Java了。我的基本思路是，核心代码用c，速度快，需要记的语言细节少；外围用Python glue，灵活，简洁，任何模块都容易上手，绝配。Java的繁琐，C++的无数无用的特性，都让我只在不得不用的时候才去用。Objective-C是另一个我欣赏的语言，问题是不跨平台，过于封闭。</p>
+<p>可惜的是，在这个节奏极快的时代，不是所有情况下都适合上c。之前有一个项目也是类似的架构和规模，为了节省时间，当初几乎没有服务器平台编程经验的我，在服务器端选择用Django+Apache+MySQL做，成熟，社区活跃，又是python作为主要开发语言，这些都是这个选择的原因。说实话，几个月过去后，回首看，这不是一个愉快的经历。Django是一个好架构，大而全，而大而全有时也就意味着臃肿，五花八门的配置，过紧的模块耦合对引入第三方工具限制颇多，自带的ORM又不好用。之前从来没有搞过服务器配置的我，对Apache的配置和效率所带来的琐碎的东西也头疼。总的来说这个部分花了我很多时间，有新手学习服务器编程的必经过程，也有折腾Django和Apache没必要的时间浪费，很大部分上抵消了Python带来的快速开发的灵活性。而一旦服务器上线，动态语言带来的一些bug又会让人头疼。对于普通高校实验室这种没有完善的服务器调试的条件，基本就是改了就上线用，有些隐蔽bug到某些条件分支才会触发，一旦在运行中途出问题，改起来也麻烦。</p>
+<p>从那时起，我就特别想，要是有一种语言能把c和Python的优点结合起来，也就是说</p>
+<ul class="simple">
+<li>速度快，高性能</li>
+<li>简洁明了，需要记的语言细节少，开发迅速(c)</li>
+<li>灵活，开发快速，类Python的list，map等常用数据结构支持(Python)</li>
+<li>完善的模块支持，模块也容易上手(Python)</li>
+<li>对程序员友好的并行架构(Erlang)</li>
+<li>安全，绝大部分问题能消灭在compile time中(C minus pointer)</li>
+</ul>
+<p>那基本就是系统级和网络级编程最对我胃口的语言了。然后我就找到了 <a class="reference external" href="http://www.golang.org/">Go</a> 。</p>
+<p>Go的设计者是Robert Griesemer, Rob Pike和Ken Thompson，当年设计C和Unix，后来的Plan9团队中的人 。Go的设计理念很明确，就是将动态类型语言的编程容易度和静态类型语言的安全效率结合起来。当然，Go吸引我的地方，不是因为其是Google出品，也不是因为其设计者皆为大牛，而是因为，Go真的做到了它所宣称的目标。Go就如同C和Python中间的完美结合，如果你是Python爱好者，又追求代码的速度和并行化，那么简单说，Go就是为你设计的。Go有很浓厚的C的遗风，尽量屏蔽C++和Java的影响，比如没有独立的OO体系（并不是说不能OO），一切以struct为中心，没有Exceptions(Oh yes!)，仍然有指针，等等。但是，Go又吸取了很多新语言的精华，并带有自己独特的设计。比如</p>
+<ol class="arabic simple">
+<li>保留但大幅度简化指针</li>
+</ol>
+<p>Go保留着C中值和指针的区别，但是对于指针繁琐用法进行了大量的简化，引入引用的概念。所以在Go中，你几乎不用担心会因为直接操作内寸而引起各式各样的错误。</p>
+<ol class="arabic simple" start="2">
+<li>多参数返回</li>
+</ol>
+<p>还记得在C里面为了回馈多个参数，不得不开辟几段指针传到目标函数中让其操作么？在Go里面这是完全不必要的。而且多参数的支持让Go无需使用繁琐的exceptions体系，一个函数可以返回期待的返回值加上error，调用函数后立刻处理错误信息，清晰明了。</p>
+<ol class="arabic simple" start="3">
+<li>Array，slice，map等内置基本数据结构</li>
+</ol>
+<p>如果你习惯了Python中简洁的list和dict操作，在Go中，你不会感到孤单。一切都是那么熟悉，而且更加高效。如果你是C++程序员，你会发现你又找到了STL的vector 和 map这对朋友。</p>
+<ol class="arabic simple" start="4">
+<li>Interface</li>
+</ol>
+<p>Go最让人赞叹不易的特性，就是 <a class="reference external" href="http://research.swtch.com/interfaces">interface</a> 的设计。任何数据结构，只要实现了interface所定义的函数，自动就implement了这个interface，没有像Java那样冗长的class申明，提供了灵活太多的 <a class="reference external" href="http://golangtutorials.blogspot.com/2011/06/interfaces-in-go.html">design</a> 和OO抽象度 ，让你的代码也非常干净。千万不要以为你习惯了Java那种一条一条加implements的方式，感觉还行，等接口的设计越来越复杂的时候，无数Bug正在后面等着你。</p>
+<p>同时，正因为如此，Go的interface可以用来表示任何generic的东西，比如一个空的interface，可以是string可以是int，可以是任何数据类型，因为这些数据类型都不需要实现任何函数，自然就满足空interface的定义了。加上Go的type assertion，可以提供一般动态语言才有的duck typing特性， 而仍然能在compile中捕捉明显的错误。</p>
+<ol class="arabic simple" start="5">
+<li>OO</li>
+</ol>
+<p>Go本质上不是面向对象语言，它还是过程化的。但是，在Go中， 你可以很轻易的做大部分你在别的OO语言中能做的事，用更简单清晰的逻辑。是的，在这里，不需要class，仍然可以继承，仍然可以多态，但是速度却快得多。因为OO在Go中，就是普通的 <a class="reference external" href="http://golangtutorials.blogspot.com/2011/06/structs-in-go-instead-of-classes-in.html">struct</a> 操作。</p>
+<ol class="arabic simple" start="6">
+<li>Goroutine</li>
+</ol>
+<p>这个几乎算是Go的招牌特性之一了，我也不想多提。如果你完全不了解Goroutine，那么你只需要知道，这玩意是超级轻量级的类似线程的东西，但通过它，你不需要复杂的线程操作锁操作，不需要care调度，就能玩转基本的并行程序。在Go里，触发一个routine和erlang spawn一样简单。基本上要掌握Go，以Goroutine和channel为核心的
+<a class="reference external" href="http://golang.org/doc/go_mem.html">内存模型</a>
+是必须要懂的。不过请放心，真的非常简单。</p>
+<ol class="arabic simple" start="7">
+<li>更多现代的特性</li>
+</ol>
+<p>和C比较，Go完全就是一门现代化语言，原生支持的Unicode, garbage collection, Closures(是的，和functional programming language类似), function是first class object，等等等等。</p>
+<p>看到这里，你可能会发现，我用了很多轻易，简单，快速之类的形容词来形容Go的特点。我想说的是，一点都不夸张，连Go的入门学习到提高，都比别的语言门槛低太多太多。在大部分人都有C的背景的时代，对于Go，从入门到能够上手做项目，最多不过半个月。Go给人的感觉就是太直接了，什么都直接，读源代码直接，写自己的代码也直接。</p>
+<p>有朋友要抗议了，你把Go吹的这么好，难道它就没有缺点？有，当然有，不过和它的优点比，我觉得很多缺点都是因为整个语言太新，不成熟，随着时间的推移都能得到解决，相比之下都能忍了。</p>
+<p>还有朋友要说，Go这么好，为什么没人用？我想说，眼界放开点，这个世界精彩的东西比你想象的多。Go被Google用于 <a class="reference external" href="http://code.google.com/p/vitess/">Youtube</a> 的数据库，被越来越多的国外公司(大部分创业公司)用于 <a class="reference external" href="https://code.google.com/p/go-wiki/wiki/GoUser://code.google.com/p/go-wiki/wiki/GoUsers">backend</a> 开发，甚至在天朝，也有完全用Go做服务开发的云应用公司了。可以说，随着Go 1的正式推出和之后版本的逐渐成熟，Go的使用范围，明显是越来越广。</p>
+<p>总结一下。</p>
+<p>如果你是FP函数式编程语言的爱好者，Go不一定能给你带来很大的惊喜，学不学Go纯粹取决于你的项目性质。FP中很多的特性Go都没有，是不是真的需要有见仁见智，但Go的设计理念可能对你来说会太过于陈旧。</p>
+<p>如果你是Python，Ruby或者其他动态语言狂热爱好者，Go很可能是你的菜，Go的设计能让你很快上手，而同样的设计换成Go能让你的性能立刻有显著提高(<a class="reference external" href="http://www.techempower.com/benchmarks/">1</a>)(<a class="reference external" href="blog.iron.io/2013/03/how-we-went-from-30-servers-to-2-go.html">2</a>)。</p>
+<p>如果你是C爱好者，强烈建议你学习和使用Go。Go可以调用C/C++程序，又提供了太多的便利，速度上稍有牺牲，但并不大。在绝大部分场景下Go能给你带来媲美C的性能，而对于某些确实性能过于关键的场合，也可以通过cgo让Go和C搭配。</p>
+<p>如果你是Java爱好者，除非你是做Android这种不得不用Java的平台，否则也建议你尝试学习Go，这个开发上感觉的差异如同比较开载着1吨石头的拖拉机和开保时捷911那么明显，而Java能给你的，Go能给得更好。当然除了Java世界丰富的类库，这个是任何新语言都无法避免的阵痛。</p>
+<p>如果你是C++爱好者，<a class="reference external" href="mailto:!&#37;&#52;&#48;#$%^&amp;*">!<span>&#64;</span>#$%^&amp;*</a>，恭喜你，至少你的智商应该是没问题的。人生苦短，赶紧脱离C++这个苦海吧。你用来学89个C++高级特性的时间，估计已经用Go写了64个开源项目了。</p>
+<p>如果你是像我一样的C和Python的爱好者，对动态语言又没有特殊的热爱……我还需要说什么呢？</p>
+<p>我想用Douglas Crockford在 <a class="reference external" href="http://www.codersatwork.com/">Coders at work</a> 中的一段话进行总结</p>
+<blockquote>
+I think the best way to make Javascript better would be to make it smaller. If we could just get it down to what it does really well and remove the features that add little or no value, it’s actually a better language. And I think we can take the approach to HTML; I think we can take that approach to HTTP and CSS. I think all of the standards that we are working with, we need to figure out what do they do right and what is it missing and refocus them, rather than just piling new features on top.</blockquote>
+<p>这，正是很多人喜欢Go，而不是别的看起来很美的语言的原因。</p>
+</div>
+</body>
+</html>

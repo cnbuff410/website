@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+<title>同是游戏，命运迥异</title>
+<meta name="author" content="cnbuff410" />
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7614 2013-02-21 15:55:51Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+<style type="text/css">
+
+/*
+:Author: Kun Li
+:Contact: likunarmstrong@gmail.com
+:Copyright: This stylesheet has been placed in the public domain.
+
+Stylesheet for use with Docutils for my blog.
+*/
+
+table.footnote {
+  border-left: solid 1px #F2FFFC;
+  margin-left: 1px }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: #F2FFFC }
+
+ul {
+    list-style-type: disc;
+}
+
+</style>
+</head>
+<body>
+<div class="document" id="id1">
+<h1 class="title">同是游戏，命运迥异</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>cnbuff410</td></tr>
+<tr><th class="docinfo-name">Contact:</th>
+<td><a class="first last reference external" href="mailto:likunarmstrong&#37;&#52;&#48;gmail&#46;com">likunarmstrong<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
+</tbody>
+</table>
+<p>现今的中国互联网，随便去哪里逛逛，就能看到:</p>
+<p><strong>让孩子远离电子毒品</strong></p>
+<p><strong>“电子毒品”让人玩物丧志</strong></p>
+<p><strong>电脑网络游戏演变为青少年精神鸦片</strong></p>
+<p>类似的题目。游戏在猪流媒体那里是洪水猛兽，几乎是板上钉钉的调调了。至于中国教育界嘛，用脚趾头都想得出来，大一不让玩电脑，带电脑，禁止举办电子竞技比赛，等等之类，花样繁多。考虑到我从小学开始偷钱并旷课半个月玩游戏，初中开始逃课玩游戏，高中翻墙玩游戏，大学光明正大通宵玩游戏，这一路学生生涯走来，就压根没有被老师同学当作“好学生”过，此点让我甚是遗憾啊。</p>
+<p>昨天吃饱喝足，抽空看了篇ACM Communication的文章，标题叫做Learning Through Games。这篇文章蛮有意思，就是在介绍美国是怎么把游戏和学习结合起来的。这篇文章的开篇就介绍了一个中学教师，注意到老美特别喜欢的Guitar Hero游戏可能可以拓展并挑战人的音乐素养，于是努力将此类游戏带进课堂。注意，是中学课堂。后面就陆陆续续介绍了一些游戏业在美国发展的情况。从介绍的情况看，美国小孩玩游戏是从来不受限制的，想玩就玩，要玩得闪亮。说来也难怪，美国12－17岁的孩子中，97％玩过各种各样的游戏，网络游戏啊，电脑游戏啊，掌机啊，诸如此类。所以其实你说美国学校要是学习我们天朝大学杀手锏，不允许学生宿舍用电脑之类的，那绝对行不通。哥们不用电脑，照样用iPhone之类的玩游戏嘛。</p>
+<p>文章用了一些词语来形容游戏对孩子产生的可能的正面影响：</p>
+<ul class="simple">
+<li>Stimulating their imaginations</li>
+<li>Sparking their curiosity</li>
+<li>Promoting the exploration of difficult issues and concepts</li>
+</ul>
+<p>我怕自己翻译不形象，就不直接翻译献丑了，反正意思就是说游戏对娃是有好处的，是能锻炼思维扩展大脑的，是有可能成为填鸭的应试教育的有效补充手段之一的。举的例子游戏也挺有名，比如模拟城市啊，文明啊之类，其实国内好多人都玩过。文章中还提到了一款超级著名的游戏，就是Warcraft3，这款在我们大学校园老师领导中臭名昭著的游戏，在威斯康星某教育研究者眼中，是一款可以提高“抽象思维”的工具。这个东西比较有意思，他们决定你讨论游戏策略是对大脑有益的，我们的教育工作者认为这是不务正业的。而且真要说起思维的锻炼， 星际一点都不亚于魔兽。还有没有著名游戏对大脑培养可能有好处呢？CS也是其中一款，CS可以锻炼人的团队合作能力，还有就是反应能力。</p>
+<p>说起地位的差距啊，游戏都是这些游戏，但区别就在于你怎么去看待它。别人老美的观点是这些游戏“help students understand complex social, historical, and economic processes.”，我们天朝老师的观点是这些游戏可能让孩子的100分下降到90分。在当今这种高考差一分就输一辈子的情况下，你要是玩游戏，得有多少辈子被输出去啊。其实按照我多年的游戏经验，像星际啊魔兽啊这种游戏，打得好的人智商都不差，也说不清是谁成就谁，比较合理的解释就是你智商高了就容易打得好，打好了又锻炼你的思维。我认识的朋友里面，也有不少聪明的，有的打得一手好游戏，有的就是游戏白痴，但基本上游戏很烂的都是因为他们很少时间玩或者不玩，真正聪明的，还没见过想玩一款游戏玩得不好的。</p>
+<p>话说这个和游戏相关的研究啊，还有别的学校搞，比如MIT啊，indiana啊，研究的名目也挺多，比如如何把计算机科学的核心理论用游戏的形式去教给学生啊，之类的。其实帝国主义对游戏远远不仅仅是不排斥的态度，另一个例子是，纽约大学一帮人吃饱没事干，就和微＊最近危机感比较强烈＊软一起搞了一个G4LI，全称是Games for Learning Institute， 就专门研究如何让游戏支持教育，那帮人为了寻找两者的联系，还亲自观摩别人打游戏，亲自学习游戏。靠，天朝要是有这样的机构，我说每年是不是会出现招考比例1：1000000的情况？你想想，大街小巷的网吧群众们，谁不想得到这个肥差啊，今天观摩一下sky玩一波流，明天亲自切几盘菜鸟，后天写个report，名字就叫“论一波流思维在电路系统研究中的重要性”，哇噻。</p>
+<p>哦，作为一名游戏爱好者，我貌似有点在这里主观误导群众了。好吧，回到ACM Communication，接下来是Arizona州立大学一名教授发言说，</p>
+<blockquote>
+Games give children the tools they need to explore complex systems and experiment with different possibilities and outcomes.
+Rather than simply memorizing figures and statistics, children learn to con- structively use facts to solve problems.</blockquote>
+<p>看来美帝教育工作者和天朝教育工作者思维方向完全相反，他们认为simply memorizing figures and statistics是不好的，这不是侮辱我们12年寒窗苦读吗，哥们辛辛苦苦早起晚睡天天背书，容易么我，到头来还被人家看成too simple，sometimes naive。再说了，你不simply memorizing东西，你考试能考好么？想当初博主我就是游戏玩得太多，高考未能有缘与C9相会。所以如果blog的读者还有念高中的，别玩游戏上网了，赶紧背一些 figures and statistics，将来才有好出路啊。你别看蜗居里面几个C9出来的主角都混得不行，那是个例，我怀疑小贝如果不是成天打游戏，后面几集也就不会打酱油了。</p>
+<p>其实总结来说吧，天朝不需要你去学习什么发散创新思维，别人就怕你发散到什么特微特上破坏和谐。天朝需要的就是又记又背又听话，从小到大大红花的人才。从这个角度讲，游戏在天朝被打压，太有道理了。</p>
+</div>
+</body>
+</html>
