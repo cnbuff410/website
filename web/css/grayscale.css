@@ -168,6 +168,10 @@ a:focus {
     font-size: 18px;
 }
 
+#post-list {
+    margin: 130px 0;
+}
+
 .post-line {
     line-height: 300%;
 }

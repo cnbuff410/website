@@ -54,10 +54,11 @@ func blogMainHandler(w http.ResponseWriter, r *http.Request) {
 		"web/html/blog_main.html",
 		"web/html/chrome/head.html",
 		"web/html/chrome/foot.html",
-		"web/html/chrome/nav.html"))
+		"web/html/chrome/nav-blog.html"))
 
 	c := appengine.NewContext(r)
 	Posts, err := getPosts(c, r)
+	Posts = Posts[:15]
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -80,7 +81,7 @@ func blogPostHandler(w http.ResponseWriter, r *http.Request) {
 		"web/html/blog_post.html",
 		"web/html/chrome/head.html",
 		"web/html/chrome/foot.html",
-		"web/html/chrome/nav-post.html"))
+		"web/html/chrome/nav-blog.html"))
 
 	if err := t.Execute(w, &PostContent{Content: byte2html(content)}); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
