@@ -38,6 +38,10 @@ p {
     }
 }
 
+img {
+    margin-bottom: 30px;
+}
+
 a {
     color: #9ddfd9;
     -webkit-transition: all .2s ease-in-out;
