@@ -1,0 +1,11 @@
+application: likunarmstrong
+
+dispatch:
+  - url: "*/favicon.ico"
+    module: frontpage
+
+  - url: "*/"
+    module: frontpage
+
+  - url: "*/blog/*"
+    module: blog
