@@ -21,6 +21,9 @@ handlers:
     # You can also replace "*" with a specific host, e.g. https://example.org
     Access-Control-Allow-Origin: "*"
 
+- url: /pdf
+  static_dir: static/pdf
+
 # Images
 - url: /images
   static_dir: web/images
@@ -31,14 +34,8 @@ handlers:
   static_dir: web/css
   #expiration: "60m"
 
-- url: /js
-  static_dir: web/js
-
-- url: /dart
-  static_dir: web/dart
-
 - url: /packages
-  static_dir: web/dart/packages
+  static_dir: web/packages
 
 - url: /.*
   script: _go_app
