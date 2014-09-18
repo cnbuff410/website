@@ -9,11 +9,20 @@ _test
 
 *.exe
 
+dispatch
+
 *.dart
 *._data
+*.js_
+*.js.deps
 *.dart.js
 *.dart.js.map
 *.dart.precompiled.js
 web/packages/
 
-dispatch
+blog/dart/.idea/
+blog/dart/.buildlog
+blog/dart/.pub/
+blog/dart/build/
+blog/dart/packages
+blog/dart/pubspec.lock

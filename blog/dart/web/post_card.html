@@ -1,0 +1,45 @@
+<link rel="import" href="packages/polymer/polymer.html">
+<link rel="import" href="packages/paper_elements/paper_ripple.html">
+
+<polymer-element name="post-card">
+    <template>
+        <style>
+            #core_card {
+                height: 100px;
+                border-radius: 5px;
+                box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+                background-color: #192431;
+            }
+
+            #core_card:hover {
+                background-color: #792431;
+            }
+
+            div.vertical-line {
+                width: 3px;
+                background-color: gold;
+                height: 70px;
+                border: 1px lightgoldenrodyellow;
+                border-radius: 1px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            #date {
+                margin-left: 30px;
+                margin-right: 10px;
+            }
+        </style>
+        <core-card id="core_card" horizontal layout center relative>
+            <div id="date">
+                <div>24</div>
+                <div>五月</div>
+                <div>2013</div>
+            </div>
+            <div class="vertical-line"></div>
+            <h3 flex>这是一个测试标题这是一个测试标题这是一个测试标题</h3>
+            <paper-ripple fit></paper-ripple>
+        </core-card>
+    </template>
+    <script type="application/dart" src="post_card.dart"></script>
+</polymer-element>

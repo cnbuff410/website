@@ -56,14 +56,12 @@
           <h3>Kun's blog</h3>
         </span>
       </div>   
-       
       <core-ajax-dart auto id="ajax" url="http://localhost:8080/posts/all" 
         params='{"callback":"showIP"}'
         handleAs="json" response="{{resp}}">
       </core-ajax-dart>
       <div layout horizontal center-justified>
         <div class="content" layout vertical center>
-          
         </div>
       </div>
     </core-header-panel>
