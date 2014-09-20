@@ -1,0 +1,63 @@
+<link rel="import" href="packages/polymer/polymer.html">
+<link rel="import" href="packages/core_elements/core_icon_button.html">
+<link rel="import" href="packages/core_elements/core_toolbar.html">
+<link rel="import" href="packages/core_elements/core_header_panel.html">
+<link rel="import" href="packages/core_elements/core_animated_pages.html">
+<link rel="import" href="packages/core_elements/core_transition_css.html">
+<link rel="import" href="post_card.html">
+
+<polymer-element name="blog-app">
+    <template>
+        <style>
+            #pages {
+                height: 100%;
+            }
+
+            div.post-card:first-of-type {
+                margin-top: 50px;
+            }
+
+            div.post-card {
+                width: 60%;
+                margin: 10px 0;
+                cursor: pointer;
+            }
+
+            div.post-content {
+                background-color: #ffffff;
+                height: 100%;
+                margin: 0px;
+            }
+        </style>
+        <core-toolbar id="core_toolbar">
+            <core-icon-button icon="{{selected != 0 ? 'arrow-back' : 'home'}}" id="home-button" on-tap="{{back}}">
+            </core-icon-button>
+            <div id="div" flex>Offline Log</div>
+            <core-icon-button icon="search" id="search-button"></core-icon-button>
+            <core-icon-button icon="more-vert" id="more-button"></core-icon-button>
+        </core-toolbar>
+        <core-animated-pages id="pages" flex transitions="cross-fade cross-fade-delayed tile-cascade hero-transition"
+                             on-core-animated-pages-transition-end="{{transitionEnd}}"
+                             selected="{{selected}}">
+            <section vertical layout center>
+                <template repeat="{{post in posts | enumerate}}">
+                    <div class="post-card" on-tap="{{selectPost}}" hero-id="item-{{post.index}}"
+                       hero?="{{selected == post.index + 1 || lastSelected == post.index + 1}}">
+                        <post-card title="{{post.value}}"></post-card>
+                    </div>
+                </template>
+            </section>
+            <template repeat="{{post in posts | enumerate}}">
+                <section vertical layout>
+                    <div class="post-content" hero-id="item-{{post.index}}"
+                         hero?="{{selected == post.index + 1 || selected == 0}}">
+                        <h1>{{post.value}}</h1>
+                    </div>
+                </section>
+            </template>
+        </core-animated-pages>
+
+    </template>
+
+    <script type="application/dart" src="blog_app.dart"></script>
+</polymer-element>

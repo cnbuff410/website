@@ -7,44 +7,21 @@
     <title>Offline Log</title>
 
     <!-- include the web_components polyfills with support for Dart. -->
+    <script src="packages/web_components/platform.js"></script>
     <script src="packages/web_components/dart_support.js"></script>
 
     <!-- import the components -->
-    <link rel="import" href="packages/polymer/polymer.html">
-    <link rel="import" href="packages/core_elements/core_icon_button.html">
-    <link rel="import" href="packages/core_elements/core_toolbar.html">
-    <link rel="import" href="packages/core_elements/core_header_panel.html">
-    <link rel="import" href="packages/core_elements/core_animated_pages.html">
-    <link rel="import" href="post_card.html">
+    <link rel="import" href="blog_app.html">
 
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="blog.css">
 </head>
 
-
 <body unresolved fullbleed vertical layout>
-<core-header-panel mode="standard" id="core_header_panel">
-    <core-toolbar id="core_toolbar">
-        <core-icon-button icon="home" id="home-button"></core-icon-button>
-        <div id="div" flex>Offline Log</div>
-        <core-icon-button icon="search" id="search-button"></core-icon-button>
-        <core-icon-button icon="more-vert" id="more-button"></core-icon-button>
-    </core-toolbar>
-    <section id="content">
-        <div vertical layout center>
-            <a href="#" class="post-card">
-                <post-card></post-card>
-            </a>
-            <a href="#" class="post-card">
-                <post-card></post-card>
-            </a>
-            <a href="#" class="post-card">
-                <post-card></post-card>
-            </a>
-        </div>
-    </section>
-</core-header-panel>
+<blog-app id="main"></blog-app>
+
 <!-- bootstrap polymer -->
 <script type="application/dart">export 'package:polymer/init.dart';</script>
+<script src="packages/browser/dart.js"></script>
 </body>
 </html>
