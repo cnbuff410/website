@@ -2,10 +2,10 @@ application: likunarmstrong
 
 dispatch:
   - url: "*/favicon.ico"
-    module: frontpage
+    module: default
 
   - url: "*/"
-    module: frontpage
+    module: default
 
   - url: "*/blog/*"
     module: blog

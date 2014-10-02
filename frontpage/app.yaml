@@ -4,9 +4,6 @@ runtime: go
 api_version: go1
 
 handlers:
-#- url: /icon\.ico
-#  static_files: icon.ico
-#  upload: icon\.ico
 - url: /css
   static_dir: web/css
 - url: /img
@@ -21,11 +18,8 @@ handlers:
 - url: /font-awesome
   static_dir: web/font-awesome
   mime_type: application/x-font-otf
-- url: /(.*\.(js|html))$
-  static_files: web/\1
-  upload: web/.*\.(js|html)$
 - url: /.*
   script: _go_app
 
 skip_files:
-- ^(.*/)?\.rst$
+  - ^(.*/)?.DS_Store $
