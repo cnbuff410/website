@@ -4,53 +4,26 @@
 package main
 
 import (
-	"fmt"
+	"appengine"
 	"html/template"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
-	"time"
-	"appengine"
-	"appengine/datastore"
 
-	"code.google.com/p/go.net/html"
 	"github.com/PuerkitoBio/goquery"
 )
 
-const (
-	pathPrefix    string = "web/posts"
-	datePreFormat string = "2006-01-02"
-	dateFormat    string = "Mon, Jan _2 2006"
-	previewLength int    = 200
-)
-
-// Post represent a post
-type Post struct {
-	Key     string
-	Title   string
-	Date    string
-	Link    string
-	Preview string
-	Tags    []string
-}
-
-// PostContent represent the html content of a post
-type PostContent struct {
-	Content template.HTML
-}
-
-func getPosts(r *http.Request) ([]*Post, error) {
+func getPosts(r *http.Request) []*Post {
 	c := appengine.NewContext(r)
+	var posts []*Post
+	var fname, path, link, title, dateString string
 	fileInfos, err := ioutil.ReadDir(pathPrefix)
 	if err != nil {
-		return nil, err
+		c.Errorf("open file failed: %v", err)
+		return posts
 	}
-	var posts []*Post
-	var fname, path, link, title, datePreString, preview string
-	var datePre time.Time
-	var size int64
 
 	for i := len(fileInfos) - 1; i >= 0; i-- {
 		if fileInfos[i].IsDir() {
@@ -64,15 +37,12 @@ func getPosts(r *http.Request) ([]*Post, error) {
 		path = filepath.Join(pathPrefix, fname)
 		content, _ := os.Open(path)
 		defer content.Close()
-		node, err := html.Parse(content)
+
+		doc, err := goquery.NewDocumentFromReader(content)
 		if err != nil {
-			// Invalid post content, simply ignore now
-			c.Errorf("error parsing the content of post: %v", err.Error())
+			c.Errorf("create new goquery document failed: %v", err)
 			continue
 		}
-		c.Infof("Process file %s:\n", fname)
-
-		doc := goquery.NewDocumentFromNode(node)
 
 		/* Title */
 		title = doc.Find("h1.title").Text()
@@ -82,42 +52,29 @@ func getPosts(r *http.Request) ([]*Post, error) {
 			continue
 		}
 
-		/* Link and preview */
-		preview = ""
+		/* Link */
 		selection := doc.Find("body > div > h1 + p > a.external[href]")
 		if selection.Length() > 0 {
 			link, _ = selection.Attr("href")
-			preview = "PDF"
 		} else {
-			link = fmt.Sprintf("%v/%v", r.URL.Path, fname)
-			previewSel := doc.Find("body > div > p")
-			for i := 0; i < previewSel.Length(); i++ {
-				preview += previewSel.Get(i).FirstChild.Data + "\n"
-				if len(preview) > previewLength {
-					break
-				}
-			}
+			link = fname
 		}
-		c.Infof("preview is %v", preview)
+		c.Infof("link is %v", link)
 
-		size = fileInfos[i].Size()
-		datePreString = strings.Join(strings.Split(fname, "-")[:3], "-")
-		datePre, _ = time.Parse(datePreFormat, datePreString)
+		dateString = strings.Join(strings.Split(fname, "-")[:3], "-")
 		posts = append(posts, &Post{
-			Key:     fmt.Sprintf("%s-%d", fname, size),
-			Title:   title,
-			Preview: preview,
-			Date:    datePre.Format(dateFormat),
-			Link:    link,
+			FileName: fname,
+			Title:    title,
+			Date:     dateString,
+			Link:     link,
 		})
+		c.Infof("Process file %s:\n", fname)
+		c.Infof("date is %v", dateString)
+		c.Infof("title is %v", title)
 	}
 
 	// Descending order based on publish time
-	return posts, nil
-}
-
-func globalKey(c appengine.Context) *datastore.Key {
-	return datastore.NewKey(c, "Pages", "PageTable", 0, nil)
+	return posts
 }
 
 func byte2html(b []byte) template.HTML {

@@ -6,71 +6,95 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"html/template"
-	"io/ioutil"
 	"net/http"
-	"path/filepath"
 	"strconv"
 	"strings"
 
 	"appengine"
+	"appengine/datastore"
 	"github.com/gorilla/mux"
 )
 
 const (
-	fileKey = "FILE"
+	fileKey           = "FILE"
+	pathPrefix string = "static/posts"
+	postKind          = "post_meta"
 )
 
 func init() {
 	r := mux.NewRouter()
 	s := r.PathPrefix("/blog").Subrouter()
-	// Main page
-	s.HandleFunc("/blog", blogMainHandler).Methods("GET")
-	s.HandleFunc("/blog/{post}", blogPostHandler).Methods("GET")
 
-	// Data fetching
-	s.HandleFunc("/posts/{num}", fetchPostHandler).Methods("GET")
+	// Main page
+	s.HandleFunc("/", blogMainHandler).Methods("GET")
+
+	// API
+	s.HandleFunc("/update", postUpdateHandler).Methods("GET", "POST")
+	s.HandleFunc("/all", postFetchMetaHandler).Methods("GET")
+	s.HandleFunc("/posts/{link}", postFetchContentHandler).Methods("GET")
+
 	http.Handle("/", s)
 }
 
 func blogMainHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "web/blog_index.html")
+	fmt.Fprintf(w, "hello")
+	//http.ServeFile(w, r, "web/blo")
 }
 
-func blogPostHandler(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	fileName := vars["post"]
-	content, err := ioutil.ReadFile(filepath.Join(pathPrefix, fileName))
+func postUpdateHandler(w http.ResponseWriter, r *http.Request) {
+	c := appengine.NewContext(r)
+	posts := getPosts(r)
+	if len(posts) == 0 {
+		fmt.Fprintf(w, "There is no article to update")
+		return
+	}
+	var keys []*datastore.Key
+	for _, post := range posts {
+		keys = append(keys, datastore.NewKey(c, postKind, post.Link, 0, nil))
+	}
+	if _, err := datastore.PutMulti(c, keys, posts); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	fmt.Fprintf(w, "Update complete: %v posts", len(posts))
+}
+
+func postFetchMetaHandler(w http.ResponseWriter, r *http.Request) {
+	c := appengine.NewContext(r)
+	var posts []Post
+	_, err := datastore.NewQuery(postKind).Order("-Date").GetAll(c, &posts)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	t := template.Must(template.ParseFiles(
-		"web/html/blog_post.html",
-		"web/html/chrome/head.html",
-		"web/html/chrome/foot.html",
-		"web/html/chrome/nav-blog.html"))
-
-	if err := t.Execute(w, &PostContent{Content: byte2html(content)}); err != nil {
+	var postTitles []string
+	var postLink []string
+	postMetaMap := make(map[string][]string)
+	for _, post := range posts {
+		postTitles = append(postTitles, post.Title)
+		postLink = append(postLink, post.Link)
+	}
+	postMetaMap["title"] = postTitles
+	postMetaMap["link"] = postLink
+	b, err := json.Marshal(postMetaMap)
+	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	w.Header().Add("Access-Control-Allow-Origin", "*")
+	fmt.Fprintf(w, "%v", string(b))
 }
 
-func fetchPostHandler(w http.ResponseWriter, r *http.Request) {
+func postFetchContentHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	num := vars["num"]
 	c := appengine.NewContext(r)
-	Posts, err := getPosts(r)
+	Posts := getPosts(r)
 	if !strings.EqualFold(num, "all") && len(num) > 0 {
 		n, e := strconv.Atoi(num)
 		if e == nil {
 			Posts = Posts[:n]
 		}
-	}
-	if err != nil {
-		c.Errorf("fetch post error: %s", err.Error())
-		return
 	}
 	b, err := json.Marshal(Posts)
 	if err != nil {
@@ -79,4 +103,5 @@ func fetchPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Fprint(w, string(b))
+	//http.ServeFile(w, r, "web/post.html")
 }
