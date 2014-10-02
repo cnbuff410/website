@@ -19,7 +19,7 @@ func init() {
 }
 
 func mainHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("cache-control", "public")
-	w.Header().Set("max-age", "7200")
-	http.ServeFile(w, r, "web/main.html")
+	//w.Header().Set("cache-control", "public")
+	//w.Header().Set("max-age", "7200")
+	http.ServeFile(w, r, "./web/main.html")
 }
