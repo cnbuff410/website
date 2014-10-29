@@ -4,18 +4,18 @@
 package main
 
 import (
-	"appengine"
 	"html/template"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
+	"appengine"
 
 	"github.com/PuerkitoBio/goquery"
 )
 
-func getPosts(r *http.Request) []*Post {
+func getPostsMeta(r *http.Request) []*Post {
 	c := appengine.NewContext(r)
 	var posts []*Post
 	var fname, path, link, title, dateString string
@@ -63,7 +63,7 @@ func getPosts(r *http.Request) []*Post {
 
 		dateString = strings.Join(strings.Split(fname, "-")[:3], "-")
 		posts = append(posts, &Post{
-			FileName: fname,
+			FileName: fname[0:(len(fname) - len(filepath.Ext(fname)))],
 			Title:    title,
 			Date:     dateString,
 			Link:     link,
@@ -75,6 +75,24 @@ func getPosts(r *http.Request) []*Post {
 
 	// Descending order based on publish time
 	return posts
+}
+
+func getPostContent(title string) (string, error) {
+	fname := title + ".html"
+	filePath := filepath.Join(pathPrefix, fname)
+	content, _ := os.Open(filePath)
+	defer content.Close()
+
+	doc, err := goquery.NewDocumentFromReader(content)
+	if err != nil {
+		return "", err
+	}
+
+	body, err := doc.Find("body").Html()
+	if err != nil {
+		return body, err
+	}
+	return body, nil
 }
 
 func byte2html(b []byte) template.HTML {

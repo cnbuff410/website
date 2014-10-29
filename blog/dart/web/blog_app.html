@@ -10,53 +10,44 @@
     <template>
         <style>
             #pages {
+                width: 100%;
                 height: 100%;
+                overflow: auto;
+                margin-bottom: 50px;
             }
-
-            div.post-card:first-of-type {
+            
+            .postcard:first-of-type {
                 margin-top: 50px;
             }
-
-            div.post-card {
-                width: 60%;
-                margin: 10px 0;
-                cursor: pointer;
+            
+            .postcard:last-of-type {
+                margin-bottom: 50px;
             }
-
-            div.post-content {
-                background-color: #ffffff;
-                height: 100%;
-                margin: 0px;
+            
+            div.postcard {
+                width: 100%;
+                height: 80px;
+                margin: 2em auto;
+                cursor: pointer;               
             }
         </style>
+        
         <core-toolbar id="core_toolbar">
-            <core-icon-button icon="{{selected != 0 ? 'arrow-back' : 'home'}}" id="home-button" on-tap="{{back}}">
+            <core-icon-button icon="home" id="home-button">
             </core-icon-button>
-            <div id="div" flex>Offline Log</div>
+            <div id="div">Offline Log</div>
+            <span flex></span>
             <core-icon-button icon="search" id="search-button"></core-icon-button>
             <core-icon-button icon="more-vert" id="more-button"></core-icon-button>
         </core-toolbar>
-        <core-animated-pages id="pages" flex transitions="cross-fade cross-fade-delayed tile-cascade hero-transition"
-                             on-core-animated-pages-transition-end="{{transitionEnd}}"
-                             selected="{{selected}}">
-            <section vertical layout center>
-                <template repeat="{{post in posts | enumerate}}">
-                    <div class="post-card" on-tap="{{selectPost}}" hero-id="item-{{post.index}}"
-                       hero?="{{selected == post.index + 1 || lastSelected == post.index + 1}}">
-                        <post-card title="{{post.value}}"></post-card>
-                    </div>
-                </template>
-            </section>
+        <div id="pages" flex>        
             <template repeat="{{post in posts | enumerate}}">
-                <section vertical layout>
-                    <div class="post-content" hero-id="item-{{post.index}}"
-                         hero?="{{selected == post.index + 1 || selected == 0}}">
-                        <h1>{{post.value}}</h1>
-                    </div>
-                </section>
+              <div class="postcard" id="post-{{post.index}}" on-tap="{{selectPost}}">
+                  <post-card title="{{post.value['Title']}}" date="{{post.value['Date']}}">
+                  </post-card>
+              </div>
             </template>
-        </core-animated-pages>
-
+        </div>
     </template>
 
     <script type="application/dart" src="blog_app.dart"></script>

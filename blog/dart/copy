@@ -1,0 +1,2 @@
+rm -rf ../web/
+cp -r ./build/web ../

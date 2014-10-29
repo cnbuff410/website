@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Log</title>
+    
+    <link rel="stylesheet" href="css/post.css">
+    
+    <!-- include the web_components polyfills with support for Dart. -->
+    <script src="packages/web_components/platform.js"></script>
+
+    <!-- import the components -->
+    <link rel="import" href="post_app.html">
+    
+</head>
+
+<body fullbleed>
+    <post-app></post-app>
+    <hr/>
+    <footer>
+      <div>this blog is written by 
+      <a href="https://golang.org/" target="_blank">Go</a>+
+      <a href="https://www.dartlang.org/" target="_blank">Dart</a>+
+      <a href="https://www.polymer-project.org" target="_blank">Polymer</a>
+      , and hosted on 
+      <a href="https://cloud.google.com/appengine/docs" target="_blank">AppEngine</a></div>
+    </footer>
+<!-- bootstrap polymer -->
+<script type="application/dart">export 'package:polymer/init.dart';</script>
+<script src="packages/browser/dart.js"></script>
+</body>
+
+</html>

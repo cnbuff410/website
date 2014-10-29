@@ -2,45 +2,64 @@
 <link rel="import" href="packages/paper_elements/paper_shadow.html">
 <link rel="import" href="packages/paper_elements/paper_ripple.html">
 
-<polymer-element name="post-card">
+<polymer-element name="post-card" attributes="title date">
     <template>
-        <style>
+        <style>           
             #core_card {
-                height: 100px;
+                width: 60%;
+                height: 100%;
+                margin: 0 auto;
                 border-radius: 5px;
                 box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
-                background-color: #fff;
+                background: -webkit-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Chrome 10+, Saf5.1+ */
+                background:    -moz-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* FF3.6+ */
+                background:     -ms-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* IE10 */
+                background:      -o-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Opera 11.10+ */
+                background:         linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* W3C */
             }
-
-            /*#core_card:hover {*/
-                /*background-color: #ececec;*/
-            /*}*/
 
             div.vertical-line {
                 width: 3px;
-                background-color: #209dff;
-                height: 70px;
+                background-color: #dfbd81;
+                height: 90%;
                 border: 1px lightgoldenrodyellow;
                 border-radius: 1px;
                 margin-left: 20px;
+            }
+            
+            #title {
+                font-weight: 400;
+                margin: 0px;
+                padding: 0px;
+                font-size: 25px;
+                margin: 15px 0px;
+                text-align: center;
             }
 
             #date {
                 margin-left: 30px;
                 margin-right: 10px;
+                text-align: center;
+            }
+            
+            #year {
+                font-size: 120%;
+                text-align: center;
             }
         </style>
-        <core-card id="core_card" on-mouseover="{{mouseOver}}" on-mouseleave="{{mouseLeave}}" horizontal layout center relative>
-            <div id="date">
-                <div>24</div>
-                <div>五月</div>
-                <div>2013</div>
-            </div>
-            <div class="vertical-line"></div>
-            <h3 flex>{{title}}</h3>
-            <paper-shadow z="{{shadowLevel}}"></paper-shadow>
-            <paper-ripple fit></paper-ripple>
-        </core-card>
+
+          <div id="core_card" on-mouseover="{{mouseOver}}" on-mouseleave="{{mouseLeave}}" 
+                horizontal layout center>
+              <div id="date">
+                  <div><span>{{month}}</span> <span>{{day}}</span></div>
+                  <div id="year">{{year}}</div>
+              </div>
+              <div class="vertical-line"></div>
+              <h3 id="title" flex>{{title}}</h3>
+              <paper-shadow z="{{shadowLevel}}"></paper-shadow>
+              <paper-ripple fit></paper-ripple>
+          </div>
+
     </template>
     <script type="application/dart" src="post_card.dart"></script>
 </polymer-element>
