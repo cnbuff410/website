@@ -35,13 +35,15 @@ func init() {
 }
 
 func blogServeHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "web/blog.html")
+	c := appengine.NewContext(r)
+	c.Infof("In blog serve")
+	http.ServeFile(w, r, "./web/blog.html")
 }
 
 func postServeHandler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	c.Infof("In post serve")
-	http.ServeFile(w, r, "web/post.html")
+	http.ServeFile(w, r, "./web/post.html")
 }
 
 func postUpdateHandler(w http.ResponseWriter, r *http.Request) {

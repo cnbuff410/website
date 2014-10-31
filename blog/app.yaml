@@ -17,9 +17,9 @@ handlers:
   static_files: web/static/\1
   upload: web/static/(robots\.txt|favicon\.ico)
 
-- url: /blog/(.*\.(js|html))$
+- url: /blog/(.*\.(js))$
   static_files: web/\1
-  upload: web/.*\.(js|html)$
+  upload: web/.*\.(js)$
 
 - url: /blog/pdf
   static_dir: static/pdf
@@ -27,8 +27,6 @@ handlers:
 # Images
 - url: /blog/images
   static_dir: web/images
-  http_headers:
-    Access-Control-Allow-Origin: "*"
 
 - url: /blog/css
   static_dir: web/css
