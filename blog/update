@@ -1,0 +1,1 @@
+goapp deploy /Users/cnbuff410/Work/appengine/kun_website/blog/app.yaml && python trigger.py

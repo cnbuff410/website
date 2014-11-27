@@ -59,7 +59,6 @@ func getPostsMeta(r *http.Request) []*Post {
 		} else {
 			link = fname
 		}
-		c.Infof("link is %v", link)
 
 		dateString = strings.Join(strings.Split(fname, "-")[:3], "-")
 		posts = append(posts, &Post{

@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
 <title>从多核到众核处理器</title>
-<meta name="author" content="zheng" />
+<meta name="author" content="Zheng" />
 <style type="text/css">
 
 /*
@@ -374,7 +374,7 @@ ul {
 <col class="docinfo-content" />
 <tbody valign="top">
 <tr><th class="docinfo-name">Author:</th>
-<td>zheng</td></tr>
+<td>Zheng</td></tr>
 <tr><th class="docinfo-name">Contact:</th>
 <td><a class="first last reference external" href="mailto:biglizheng&#37;&#52;&#48;gmail&#46;com">biglizheng<span>&#64;</span>gmail<span>&#46;</span>com</a></td></tr>
 </tbody>
@@ -404,7 +404,7 @@ ul {
 <p><em>设计复杂度</em> ：随着晶体管数量的增加，芯片设计的设计空间、设计复杂度和验证难度都是大幅度增加的。话说Intel六核的iCore7上集成了超过十亿个晶体管，其设计难度之大可想而知。如果采用多个重复设计处理器核，那么设计的复杂度就会大大降低，从而使得设计成本降低，出错的机会也减小了。</p>
 <p>总结一下，多核系统的出现是摩尔定律与物理规律限制相互作用的结果，三个主要的限制是：功耗、互连、设计复杂度。一个处理器上的晶体管数越来越多，但是他们却因为功耗和互连线的限制并不能直接提供很高的性能，那么怎么办呢？一个最简单的办法就是用在一个处理器中集成多个简单的处理器核。这样既把多出来的晶体管用上了，而每个处理器核就像前一代的处理器一样简单，因此不必提高他们的翻转速度，各个处理器核只需要自己交换数据，因此没有很长的连线延迟。这也就是Intel放弃Pentium IV采用Core 2结构的缘由，也是本篇文章最本质的原理。</p>
 <p>从单核到多核乃至未来众核的变化并不是芯片设计公司根据客户需求，市场趋势做出的主动选择，而是在物理规律限制不得已的情况下被逼走上的道路。这意味着以前那种处理器频率越来越高的时代已经一去不复返了。在那个已经过去的黄金时代，程序员不需要怎么优化程序，因为优化程序所花的功夫和时间还不一定值得去市场上买一个新款处理器。这也就使得Microsoft敢于做越来越慢的软件。他不怕因为软件太慢卖不出去，因为处理器的翻转速度的增长会使得他本来很慢的软件，不久就会快得可以接受。但是这个故事已经结束了，现在的新款处理器跑老程序并不会快到哪里去，而当你买了新处理器还得对老程序作进一步的优化才能利用上新增的晶体管。这可能也就是微软的Vista按照老路子设计，但卖得没那么好的原因，也带来了微软裁员5000人，但是Linux却还是比较红火的结果。下面这个图是09年初Redhat Linux和Windows的股票走势，可以比较明显的看出来，当处理器速度不再翻倍的时候，当人们没钱总是换硬件的时候，微软的表现就不是那么好了。因为Windows Vista是微软沿用了以前处理器发展规律设计的操作系统，因此并不叫座。微软公司不得不花大力气重写了他们的内核代码，推出了Windows 7来收拾Vista的残局。</p>
-<img alt="http://www.kunli.me/img/blog/rhtvsmsft.png" src="http://www.kunli.me/img/blog/rhtvsmsft.png" />
+<img alt="http://www.kunli.me/blog/images/rhtvsmsft.png" src="http://www.kunli.me/blog/images/rhtvsmsft.png" />
 <p>多核虽然说着容易，做起来也不难，但是难得却不在多核本身上，下面的内容简单地揭开
 了多核设计貌似困难实则简单地面纱，同时也指出多核之难不在核上，而在互连与编程两
 大挑战。</p>
@@ -420,9 +420,9 @@ ul {
 <h2><a class="toc-backref" href="#id9">以总线或交换开关为基本互连架构的多核设计</a></h2>
 <p>最初的多核处理器集成的处理器核数量较小，典型的特点就是互连方式是以总线和交换开关为主，而每个核结构相似功能较为强大。这种设计也该可以看作传统一个主板上多处理器结构在片上的集成，主要的创新来源于摩尔定律指导下半导体技术进步带来的集成度提高，体系结构的创新并不明显。这种结构的始祖（当然也是片上多核的始祖）是Hydra。</p>
 <p>Stanford的Hydra处理器是最早提出的片上多核处理器。Hydra发明后成立了一家公司，然后这个公司被SUN公司购买(后来SUN又被Oracle买了,不过那是后话)，Hydra也就成为了现在SUN主流处理器Niagara的原型。不仅如此，现在Intel的双核、四核处理器也是采用了和Hydra类似的结构。Hydra的出发点也就是看到了多发射超标量处理器架构的末日，然后将多个简单的处理器核集成在了一个芯片上，互连方式还是最简单的总线互连，每个处理器通过总线广播的方式发送信息，也通过总线侦听来接受其他处理器。这种方法设计简单、有效，可以重用复杂的处理器设计，并且借用版级总线设计的协议，是一种多核发展初级阶段的重要一步。下图就是Hydra的示意图，可以看到这其实就是一个集成在片上的总线带动的多处理器。</p>
-<img alt="http://www.kunli.me/img/blog/hydra_arch.jpg" src="http://www.kunli.me/img/blog/hydra_arch.jpg" />
+<img alt="http://www.kunli.me/blog/images/hydra_arch.jpg" src="http://www.kunli.me/blog/images/hydra_arch.jpg" />
 <p>这种结构的发展也有不同的阶段和变体：最初只有处理器核、总线和缓存集成在片上；后来存储和I/O控制器也集成了进到片上来；图中的总线之下的L2缓存有时候也会被放在总线与处理器之间；片上与片外的连接也不一定要是处理器与存储器的接口，而可以成为两个或多个多核处理器的接口。 Hydra引领的以总线为主的片上多核设计方案也成为了工业界第一代双核甚至四核处理器设计的雏形。最早的双核处理器以及Intel的第一代四核处理器都是这种设计。总线可以替换为交换开关，来实现类似的功能。如下图所示的是SUN在2007年推出的八核Niagara 2，其互连结构就是交换开关。</p>
-<img alt="http://www.kunli.me/img/blog/niagara2.jpg" src="http://www.kunli.me/img/blog/niagara2.jpg" />
+<img alt="http://www.kunli.me/blog/images/niagara2.jpg" src="http://www.kunli.me/blog/images/niagara2.jpg" />
 <p>这种结构有以下这些特点：</p>
 <ul class="simple">
 <li>从存储器读写的角度来讲这种设计统称为UMA(Uniform Memory Access)。每个处理器核访问存储的路径都是一样的，总线(或者交换开关)被不同的处理器核交替使用从而达到访问共享存储的目的。这种存储访问结构自然地支持了内存空间在各个处理器核之间共享已经基于总线侦听的缓存一致性协议。</li>
@@ -437,9 +437,9 @@ ul {
 <p>流处理器以及GPGPU代表的路径是完全绕开了传统处理器设计而针对新的应用借鉴其他专用处理器（GPU）而展开的全新设计。具体地讲，Hydra面对的应用还是超标量处理器所面对的传统应用，大量的程序循环和跳转，不规则的内存地址访问。而随着计算技术不断升入到人们的生活当中，另一种计算模式异军凸显，这就是大规模的数据并行计算模式。比较通俗一点的应用就是图像和视频的处理以及综合，比如视频的编解码，动画的合成等。在数字通讯的年代这种计算越发重要，像无线基站或者手机上各种通讯协议栈的处理。在单核的年代，进行这种计算的处理器叫DSP(Digital Signal Processor)，以有别于CPU这种擅长控制和跳转的处理器。DSP的结构与普通的CPU的超标量结构不同，大量采用了SIMD（Single Instruction Multiple Data)或者VLIW(Very Long Instruction Word)的结构，以实现在同一个处理器流程通路下的数据乃至指令的并行。那么就像Hydra是超标量CPU在多核时代的领头羊一样，Stanford这个信息工业的圣地也诞生了DSP在多核时代的领头羊Imagine。</p>
 <p>这里可能需要叉开话题来讲一下并行的基本分类了。一般地讲，并行处理有三个分类：数据并行、指令并行和线程并行。线程是一串串行执行的指令，每条指令操作一个或多个数据。在此基础上，实现并行的方式有三种，一种是多个这样的串行指令序列同时执行，就是Hydra为代表的线程并行模式；第二种数据并行是同一条指令应用在并行的数据上。比如本来是一条加法指令计算C=A+B，同时将加法应用到一组A和一组B上得到一组C上就是数据并行。SIMD和即将讲到的Imagine都利用了这种并行；第三种是指令并行，也就是说在同一时间发射多条指令，同时计算不同数据多个不同运算，VLIW就是这样一种并行方式。但是由于实现VLIW的编译器难度太高，使得直接实现大规模可扩展的指令并行比较困难。</p>
 <p>回到多核处理器的学术路径上来。Imagine是斯坦福的一个数据并行的多核处理器。Imagine有8个ALU单元被同一个控制器所控制，同时对大量的并行数据进行同样的操作。这种处理器的模式后来被称为流处理器。后面我们讲到的Nvidia的Fermi就是这种数据并行流处理器的一种实现实例。下面这个图即是Imagine的结构框图，可以看到它是多么像一个大型的SIMD单元啊。实际上它也即是48个ALU单元分成了8个SIMD簇。但是不可否认的是，就这样一个看似简单的设计提供了极高的数据并行度，使得它在处理一系列与多媒体有关的应用上得心应手，发挥了更多晶体管所带来的性能优势。</p>
-<img alt="http://www.kunli.me/img/blog/imagine_arch.jpg" src="http://www.kunli.me/img/blog/imagine_arch.jpg" />
+<img alt="http://www.kunli.me/blog/images/imagine_arch.png" src="http://www.kunli.me/blog/images/imagine_arch.png" />
 <p>接下来我们来看看GPU处理器结构：Nvida的Fermi以及前一代的GT200，然后我们就可以发现他们和Imagine惊人的相似之处：每一个处理器核是一个简单的ALU阵列。当然，在Nvidia的名词里，处理器核叫Streaming Multiprocessor（SM），每个Fermi的SM里有32个32位ALU、32个单精度的浮点运算单元还有一些特殊运算单元；每个GT200的SM里的运算单元少地多。SM相当于Imagine里地ALU Cluster，能够执行SIMD的操作，但是绝对和Intel以及AMD里面的处理器核相去甚远。通用处理器中的每个核里有庞大的指令池和寄存器堆，执行繁杂的指令预取，分支预测，条件跳转等操作，虽然计算单元不如SM多，但是计算精度较高（64位）。换句话说，如果你的程序没有那么宽的单指令多数据并行，那么不要指望SM比传统处理器核快。</p>
-<img alt="http://www.kunli.me/img/blog/fermi_arch.jpg" src="http://www.kunli.me/img/blog/fermi_arch.jpg" />
+<img alt="http://www.kunli.me/blog/images/fermi_arch.png" src="http://www.kunli.me/blog/images/fermi_arch.png" />
 <p>片上存储是为流数据简化（也算是优化）过的。在传统的GT200中，这种存储就叫texture cache，在Imagine里叫Stream memory。在图形图像中，大部分的操作是流水线化的，所以这种cache不需要支持不同SM之间存储共享（即使需要，必需程序员显式指定，而不是处理器代劳），部分的缓存甚至是私有的，就连地址空间都是独立的。这对于流处理器来说，没有任何问题。我们把流处理想象成一个巨大的SIMD，不同的data之间没有任何共享，texture cache就够用了。但是一旦有了分支、线程并行、数据交换、信号锁，这种cache就会让程序员头痛，于是Fermi做了一些优化，使得片上缓存至少在地址上是共享了，但是并不完全支持缓存一致性。只有当程序员显示使用同步信号量，存储的顺序核一致性才是可以保证的。</p>
 <p>这里需要澄清一个很明显的误区就是在GPU上编程能够成百倍地提高CPU的性能，这个观点在Nvidia推出CUDA的时候被狠狠吹捧了一番，不过后来大家发现GPGPU的能力其实非常有限：</p>
 <ol class="arabic simple">
@@ -459,18 +459,18 @@ ul {
 思想的一个很明显体现就是Intel的Sandy Bridge处理器，这个处理器没有遵循以往不断增
 加核数量的规律，其设计中里既有强大的传统处理器核又有类似GPU的处理器，期望做到异
 构多核来实现性能的提升，下图就是Sandy Bridge的系统结构：</p>
-<img alt="http://www.kunli.me/img/blog/sandybridge_arch.jpg" src="http://www.kunli.me/img/blog/sandybridge_arch.jpg" />
+<img alt="http://www.kunli.me/blog/images/sandybridge_arch.png" src="http://www.kunli.me/blog/images/sandybridge_arch.png" />
 </div>
 <div class="section" id="id5">
 <h2><a class="toc-backref" href="#id11">网络互连为主的处理器</a></h2>
 <p>无论是总线和交换开关的设计，还是流处理器，就没法从本质上改变多核乃至众核处理器设计上的不可扩展性。改变这种传统的互连，人们提出了使用片上网络的办法，使得未来众多的处理器核通过分布式的通讯方式相互沟通，从而避免了集中的互连设计带来的系统性能瓶颈以及较大的功耗开销。不过当片上集成核的数量不断增加时，如何把这个功能组织起来，并不是一个简单的事情，无论是学术界还是工业界都做了许多的尝试，从目前开来实际结果都不太理想。
 第一个真正采用网络来连接片上很多核的是2002年MIT一组研究人员提出来的RAW众核处理器。MIT的RAW处理器第一次应用了片上网络的概念。这个设计后来成立了一家公司叫Tilera。RAW的出发点在于看到传统单核处理器中的瓶颈在于操作数网络（scalar operand network）。这个网络把各个ALU中计算出来的数值中间结果存储到寄存器堆，又把寄存器堆里的数给ALU就行操作。随着金属互联线延迟的增加，这个移动操作数回路成为系统瓶颈，成为了导致ALU中晶体管性能提高并不能外化为处理器性能的绊脚石。</p>
 <p>解决这个问题的办法是用操作数网络把计算单元（ALU）组织起来，而不是传统意义上的操作数网络为ALU服务。每个操作数通过网络进入到一组ALU里，经过漫长流水线的处理和计算输出出来到网络中，然后送到临近的另一组ALU里，而不必绕回去。这样把每组ALU看成一个“核”，这样就构成了片上网络。下图就是RAW中每个处理器核的结构：</p>
-<img alt="http://www.kunli.me/img/blog/raw_arch.jpg" src="http://www.kunli.me/img/blog/raw_arch.jpg" />
+<img alt="http://www.kunli.me/blog/images/raw_arch.jpg" src="http://www.kunli.me/blog/images/raw_arch.jpg" />
 <p>图中可以看到，与其他商业多核处理器不同的是，RAW的片上网络深入到了处理器流水线的内部。接着，既然ALU可以编程，那么操作数网络也可以编程，这样就达成了一个软件可以控制的计算、通信众核系统。当然其网络设计就是一个普通的Mesh网格网络，如下图所示，没啥特殊的。不过这个Mesh其实是由若干个不同功能的网络联合而成，各自负责操作数、片上存储以及I/O等片上通讯的需求。</p>
 <p>RAW的难点在于对于应用程序需要就行网络和计算的双重优化，否则程序运行的效率较低。这使得编译器中指令调度不光考虑运算单元的成本，还有通讯的成本，搜索空间和复杂度大大提高。</p>
 <p>接下来介绍IBM的Cell处理器，算是工业界探索异构多核设计的先河吧。 Cell的来头还是蛮大的，是IBM，SONY和Toshiba三家大公司为未来的消费电子设计的核心计算引擎。其最典型的应用就是索尼的PS3。Cell的设计采用了环形的片上互连、异构的片上多核、以及片上系统的集成，然后在IBM的90纳米、65纳米和45纳米工艺条件下做了实现，应该说是代表了当时业界的最先进水平。不过不幸的是IBM在2009年年底的时候停止了对Cell的进一步研发，而基于Cell的索尼PS3销售上没有敌过任天堂的Wii（截止2010年9月低，Wii在全世界销售了七千六百万台，而PS3仅有四千两百万台）。这背后的原因在于什么呢？</p>
-<img alt="http://www.kunli.me/img/blog/cell_arch.jpg" src="http://www.kunli.me/img/blog/cell_arch.jpg" />
+<img alt="http://www.kunli.me/blog/images/cell_arch.jpg" src="http://www.kunli.me/blog/images/cell_arch.jpg" />
 <p>首先我们来看IBM Cell处理器的设计，其中包含了一个Power Processing Element(PPE)作为主处理器（其性能相当于64位的Power PC），加上八个Synergistic Processing Elements (SPE)作为协处理器（其性能相当于普通的RISC处理器和一个128位的SIMD），这些处理单元通过一个环形网络就行互连，达到超过200GB每秒的带宽。光从这些数据上来讲，这个多核处理器符合前面讲述的异构并行原理，并且技术也不差。最为不幸的是这个处理器太难编程了。每个协处理器有一个私有的局部存储器（256KB）大小，这个存储器几乎需要程序员来手动调度，它既没有类似于缓存的自动预取，又不与PPE的存储单元共享地址空间。如果要协调好PPE与SPE的工作，除非程序的工作模式是固定的。这样的结果就是处理器理论性能很高，但是实际程序优化起来并不容易，很多程序仅仅能够使用一个类似于PowerPC的PPE。没有多少廉价程序员能够理解如此繁杂的体系结构，愿意在上面做开发。这可能就是Cell最终被IBM停止开发的原因吧。</p>
 <p>Intel是最能理解编程的简易性对于一个处理器生命的至关重要性，在当年以x86为代表的CISC和以MIPS、SPARC为代表RISC结构出现争端的时候，Intel为了保证程序的兼容性，保持了x86指令向下兼容。尽管牺牲了一定性能却赢得了软件开发者和客户的认可，而随着半导体技术的推进这些性能牺牲被历史所抹平。针对RAW和Cell都面临的问题，Intel推出了一个保持存储一致性和x86指令集的多核设计：Larabee，作为未来GPGPU时代众核编程的抬头兵。不过这个设计从2008年透出风声到2009年底就被宣布第一代产品难产了。</p>
 <p>Larabee的设计野心就是编程的容易性，16（甚至32）个x86的处理器核通过一个环形的片上网络连接在一起，分布式的的片上缓存保持完全的一致性，没有任何特殊的专用硬件单元来增加编程的难度。大部分的优化可以通过软件来完成。完成这样一个设计难度在于两个方面：</p>
@@ -479,7 +479,7 @@ ul {
 <li>Larabee如果想要达到超过Nvidia或者AMD同类GPU产品的性能，必需有一套支持图形图像常见应用的开发工具链，而这个的开发不是一朝一夕之功。</li>
 </ul>
 <p>在摩尔定律的作用下，任何的耽搁都会导致产品的流产，Larabee开发的艰巨性决定了其性能跟不上摩尔定律，从而其第一代产品被迫下线。</p>
-<img alt="http://www.kunli.me/img/blog/larabee_arch.jpg" src="http://www.kunli.me/img/blog/larabee_arch.jpg" />
+<img alt="http://www.kunli.me/blog/images/larabee_arch.jpg" src="http://www.kunli.me/blog/images/larabee_arch.jpg" />
 </div>
 </div>
 <div class="section" id="id6">

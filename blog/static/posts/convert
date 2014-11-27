@@ -4,8 +4,18 @@ import sys
 import os
 from subprocess import call
 
-input = sys.argv[1]
-filebase = os.path.basename(input).split(".")[0]
-output = filebase + ".html"
+def convert(input):
+    filebase = os.path.basename(input).split(".")[0]
+    output = filebase + ".html"
+    print "Generate file: ", output
+    call(["rst2html.py", "--stylesheet=../../web/css/html4css1.css,../../web/css/myhtml4css1.css", "--cloak-email-addresses", input, output])
 
-call(["rst2html.py", "--stylesheet=html4css1.css,myhtml4css1.css", "--cloak-email-addresses", input, output])
+if __name__ == "__main__":
+    input = sys.argv[1]
+    if input == "all":
+        for (dirpath, dirnames, filenames) in os.walk("."):
+            for f in filenames:
+                if "rst" in f:
+                    convert(f)
+    else:
+        convert(input)

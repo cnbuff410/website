@@ -26,26 +26,26 @@ func init() {
 	s := r.PathPrefix("/blog").Subrouter()
 
 	// API
-	s.HandleFunc("/update", postUpdateHandler).Methods("GET", "POST")
-	s.HandleFunc("/all", postFetchMetaHandler).Methods("GET")
-	s.HandleFunc("/{link}", postFetchContentHandler).Methods("GET").Queries("mode", "raw")
+	s.HandleFunc("/update", updatePostCacheHandler).Methods("POST")
+	s.HandleFunc("/all", fetchPostMetaHandler).Methods("GET")
+	s.HandleFunc("/{link}", fetchPostContentHandler).Methods("GET").Queries("mode", "raw")
 
 	// Serve page
-	s.HandleFunc("/{link}", postServeHandler).Methods("GET")
-	s.HandleFunc("/", blogServeHandler).Methods("GET")
+	s.HandleFunc("/{link}", postHandler).Methods("GET")
+	s.HandleFunc("/", blogHandler).Methods("GET")
 
 	http.Handle("/", s)
 }
 
-func blogServeHandler(w http.ResponseWriter, r *http.Request) {
+func blogHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./web/blog.html")
 }
 
-func postServeHandler(w http.ResponseWriter, r *http.Request) {
+func postHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./web/post.html")
 }
 
-func postUpdateHandler(w http.ResponseWriter, r *http.Request) {
+func updatePostCacheHandler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	posts := getPostsMeta(r)
 	if len(posts) == 0 {
@@ -60,7 +60,6 @@ func postUpdateHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Fprintf(w, "Update complete: %v posts", len(posts))
 
 	// Update memcache
 	value, err := json.Marshal(posts)
@@ -79,9 +78,32 @@ func postUpdateHandler(w http.ResponseWriter, r *http.Request) {
 	} else if err != nil {
 		c.Errorf("error adding item: %v", err)
 	}
+
+	var content, postContentKey string
+	for _, post := range posts {
+		postContentKey = postContentKeyBase + post.FileName
+		content, err = getPostContent(post.FileName)
+		if err != nil {
+			c.Errorf("Read content from %v error: %v", post.FileName, err)
+			continue
+		}
+		item := &memcache.Item{
+			Key:   postContentKey,
+			Value: []byte(content),
+		}
+		if err := memcache.Add(c, item); err == memcache.ErrNotStored {
+			if err := memcache.Set(c, item); err != nil {
+				c.Errorf("error setting item: %v", err)
+			}
+		} else if err != nil {
+			c.Errorf("error adding item: %v", err)
+		}
+	}
+
+	fmt.Fprintf(w, "Update datastore complete: %v posts", len(posts))
 }
 
-func postFetchMetaHandler(w http.ResponseWriter, r *http.Request) {
+func fetchPostMetaHandler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 
 	var value []byte
@@ -120,7 +142,7 @@ func postFetchMetaHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "%v", string(value))
 }
 
-func postFetchContentHandler(w http.ResponseWriter, r *http.Request) {
+func fetchPostContentHandler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	vars := mux.Vars(r)
 	filename := vars["link"]

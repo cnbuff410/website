@@ -9,7 +9,7 @@ automatic_scaling:
   max_pending_latency: 50ms
   max_concurrent_requests: 50  # max: 500
 
-#default_expiration: "3d"
+default_expiration: "3d"
 
 handlers:
 # SEO
@@ -21,19 +21,18 @@ handlers:
   static_files: web/\1
   upload: web/.*\.(js)$
 
-- url: /blog/pdf
-  static_dir: static/pdf
-
-# Images
-- url: /blog/images
-  static_dir: web/images
-
 - url: /blog/css
   static_dir: web/css
   #expiration: "60m"
 
 - url: /blog/packages
   static_dir: web/packages
+
+- url: /blog/pdf
+  static_dir: static/pdf
+
+- url: /blog/images
+  static_dir: static/img
 
 - url: /.*
   script: _go_app

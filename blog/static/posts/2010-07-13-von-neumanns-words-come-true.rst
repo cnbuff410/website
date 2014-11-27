@@ -15,7 +15,7 @@
 
 这估计是一个学术圈很有名的轶事，可惜的是一直没有人真正把冯诺依曼的这句话描述的模型实现。现在，来自德国的一群科学家终于真正把它实现出来了：
 
-.. image:: http://www.kunli.me/img/blog/elephant.jpg
+.. image:: http://www.kunli.me/blog/images/elephant.jpg
 
 具体实现方法发表在下面的论文中：
 
