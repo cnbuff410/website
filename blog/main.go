@@ -54,7 +54,7 @@ func updatePostCacheHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	var keys []*datastore.Key
 	for _, post := range posts {
-		keys = append(keys, datastore.NewKey(c, postKind, post.Link, 0, nil))
+		keys = append(keys, datastore.NewKey(c, postKind, post.FileName, 0, nil))
 	}
 	if _, err := datastore.PutMulti(c, keys, posts); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

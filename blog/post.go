@@ -53,7 +53,7 @@ func getPostsMeta(r *http.Request) []*Post {
 		}
 
 		/* Link */
-		selection := doc.Find("body > div > h1 + p > a.external[href]")
+		selection := doc.Find("body > div > h1 + h2 > a.external[href]")
 		if selection.Length() > 0 {
 			link, _ = selection.Attr("href")
 		} else {
