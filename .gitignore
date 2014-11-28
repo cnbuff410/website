@@ -11,7 +11,6 @@ _test
 
 dispatch
 
-*.dart
 *._data
 *.js_
 *.js.deps
@@ -23,6 +22,7 @@ web/packages/
 blog/dart/.idea/
 blog/dart/.buildlog
 blog/dart/.pub/
+blog/dart/build.dart
 blog/dart/build/
 blog/dart/packages
 blog/dart/pubspec.lock
