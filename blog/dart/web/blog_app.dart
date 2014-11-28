@@ -35,6 +35,7 @@ class blog_app extends PolymerElement {
 
   void resumeWindowPosition() {
     String name = window.name;
+    print("Window name is $name");
     if (name.contains(prefix)) {
       int position = int.parse(name.split("_")[1], onError:(String source) => 0);
       print("resume to position $position");
@@ -60,7 +61,7 @@ class blog_app extends PolymerElement {
     // Prepare data
     String id = (target as DivElement).id;
     int index = int.parse(id.split("-")[1]);
-    String link = posts[index]["Link"];
+    String link = posts[index]["link"];
     if (link.contains("http")) {  // Redirect if it's external pdf
       window.location.assign(link);
     } else {  // Push history state

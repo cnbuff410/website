@@ -4,10 +4,10 @@ import "html/template"
 
 // Post represent a post
 type Post struct {
-	FileName string
-	Title    string
-	Date     string
-	Link     string
+	FileName string `json:"filename"`
+	Title    string `json:"title"`
+	Date     string `json:"date"`
+	Link     string `json:"link"`
 }
 
 // PostContent represent the html content of a post

@@ -43,7 +43,7 @@
         <div id="pages" flex>        
             <template repeat="{{post in posts | enumerate}}">
               <div class="postcard" id="post-{{post.index}}" on-tap="{{selectPost}}">
-                  <post-card title="{{post.value['Title']}}" date="{{post.value['Date']}}">
+                  <post-card title="{{post.value['title']}}" date="{{post.value['date']}}">
                   </post-card>
               </div>
             </template>
