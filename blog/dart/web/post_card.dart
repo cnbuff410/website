@@ -12,6 +12,7 @@ class PostCard extends PolymerElement with Polymer, Observable {
   @observable String year = "1984";
   @observable String month = "五月";
   @observable String day = "24";
+  @observable bool smallScreen;
 
   PostCard.created() : super.created();
   @override

@@ -1,4 +1,6 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html><html><head><script src="packages/web_components/platform.js"></script>
+<script src="packages/web_components/dart_support.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offline Log</title>
@@ -571,13 +573,8 @@ html /deep/ paper-icon-button[disabled]::shadow core-icon {
 html /deep/ core-selector paper-icon-button:not([active])::shadow core-icon {
     fill: #c4c7c7;
 }</style>
-    
-    <!-- include the web_components polyfills with support for Dart. -->
-    <script src="packages/web_components/platform.js"></script>
-<script src="packages/web_components/dart_support.js"></script>
 
     <!-- import the components -->
-    
     
 </head>
 
@@ -5058,6 +5055,62 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 
+
+<polymer-element name="core-media-query" attributes="query queryMatches">
+  <template>
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
+  </template>
+  <script>
+    Polymer('core-media-query', {
+
+      /**
+       * The Boolean return value of the media query
+       *
+       * @attribute queryMatches
+       * @type Boolean
+       * @default false
+       */
+      queryMatches: false,
+
+      /**
+       * The CSS media query to evaulate
+       *
+       * @attribute query
+       * @type string
+       * @default ''
+       */
+      query: '',
+      ready: function() {
+        this._mqHandler = this.queryHandler.bind(this);
+        this._mq = null;
+      },
+      queryChanged: function() {
+        if (this._mq) {
+          this._mq.removeListener(this._mqHandler);
+        }
+        var query = this.query;
+        if (query[0] !== '(') {
+          query = '(' + this.query + ')';
+        }
+        this._mq = window.matchMedia(query);
+        this._mq.addListener(this._mqHandler);
+        this.queryHandler(this._mq);
+      },
+      queryHandler: function(mq) {
+        this.queryMatches = mq.matches;
+        this.asyncFire('core-media-change', mq);
+      }
+    });
+  </script>
+</polymer-element>
+
+
+
+
 <polymer-element name="post-card" attributes="title date">
     <template>
         <style>           
@@ -5073,6 +5126,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background:      -o-linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* Opera 11.10+ */
                 background:         linear-gradient(90deg, #ECE9E6 10%, #FFFFFF 90%); /* W3C */
             }
+            
+            #core_card.small {
+                width: 80%;
+            }
 
             div.vertical-line {
                 width: 3px;
@@ -5083,6 +5140,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin-left: 20px;
             }
             
+            div.vertical-line.small {
+                width: 5px;
+                margin-left: 0px;
+            }
+            
             #title {
                 font-weight: 400;
                 margin: 0px;
@@ -5091,6 +5153,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin: 15px 0px;
                 text-align: center;
             }
+            
+            #title.small {
+                font-size: 20px;
+            }
 
             #date {
                 margin-left: 30px;
@@ -5098,22 +5164,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 text-align: center;
             }
             
+            #date.small {
+                display: none
+            }
+            
             #year {
                 font-size: 120%;
                 text-align: center;
             }
         </style>
-
-          <div id="core_card" on-mouseover="{{mouseOver}}" on-mouseleave="{{mouseLeave}}" horizontal="" layout="" center="">
-              <div id="date">
-                  <div><span>{{month}}</span> <span>{{day}}</span></div>
-                  <div id="year">{{year}}</div>
-              </div>
-              <div class="vertical-line"></div>
-              <h3 id="title" flex="">{{title}}</h3>
-              <paper-shadow z="{{shadowLevel}}"></paper-shadow>
-              <paper-ripple fit=""></paper-ripple>
+        <core-media-query query="max-width: 640px" querymatches="{{smallScreen}}">
+        </core-media-query>
+        <div id="core_card" class="{{ {small: smallScreen } }}" on-mouseover="{{mouseOver}}" on-mouseleave="{{mouseLeave}}" horizontal="" layout="" center="">
+          <div id="date" class="{{ {small: smallScreen } }}">
+              <div><span>{{month}}</span> <span>{{day}}</span></div>
+              <div id="year">{{year}}</div>
           </div>
+          <div class="vertical-line {{ {small: smallScreen } }}"></div>
+          <h3 id="title" class="{{ {small: smallScreen } }}" flex="">{{title}}</h3>
+          <paper-shadow z="{{shadowLevel}}"></paper-shadow>
+          <paper-ripple fit=""></paper-ripple>
+        </div>
 
     </template>
     
@@ -5144,6 +5215,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin: 2em auto;
                 cursor: pointer;               
             }
+
+            div.postcard .small {
+                font-size: 1px;
+            }
         </style>
         
         <core-toolbar id="core_toolbar">
@@ -5154,7 +5229,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <core-icon-button icon="search" id="search-button"></core-icon-button>
             <core-icon-button icon="more-vert" id="more-button"></core-icon-button>
         </core-toolbar>
-        <div id="pages" flex="">        
+        <div id="pages" flex="">
             <template repeat="{{post in posts | enumerate}}">
               <div class="postcard" id="post-{{post.index}}" on-tap="{{selectPost}}">
                   <post-card title="{{post.value['title']}}" date="{{post.value['date']}}">

@@ -2,6 +2,7 @@
 <link rel="import" href="packages/core_elements/core_icon_button.html">
 <link rel="import" href="packages/core_elements/core_toolbar.html">
 <link rel="import" href="packages/core_elements/core_header_panel.html">
+<link rel="import" href="packages/core_elements/core_media_query.html">
 
 <polymer-element name="post-app">
     <template>
@@ -9,10 +10,15 @@
           #inject {
             padding: 5% 18%;
           }
+          #inject.small {
+            padding: 5% 5%;
+          }
         </style>
         <link rel="stylesheet" href="css/html4css1.css">
         <link rel="stylesheet" href="css/myhtml4css1.css">
         
+        <core-media-query query="max-width: 640px" queryMatches="{{smallScreen}}">
+        </core-media-query>
         <core-toolbar id="core_toolbar">
             <core-icon-button icon="arrow-back" id="home-button" on-tap="{{back}}">
             </core-icon-button>
@@ -21,8 +27,8 @@
             <core-icon-button icon="search" id="search-button"></core-icon-button>
             <core-icon-button icon="more-vert" id="more-button"></core-icon-button>
         </core-toolbar>     
-        <section vertical layout fullbleed>
-           <div id="inject"></div>
+        <section vertical layout fullbleed >
+           <div id="inject" class="{{ {small: smallScreen } }}"></div>
         </section>
 
     </template>

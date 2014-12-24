@@ -30,6 +30,10 @@
                 margin: 2em auto;
                 cursor: pointer;               
             }
+
+            div.postcard .small {
+                font-size: 1px;
+            }
         </style>
         
         <core-toolbar id="core_toolbar">
@@ -40,7 +44,7 @@
             <core-icon-button icon="search" id="search-button"></core-icon-button>
             <core-icon-button icon="more-vert" id="more-button"></core-icon-button>
         </core-toolbar>
-        <div id="pages" flex>        
+        <div id="pages" flex>
             <template repeat="{{post in posts | enumerate}}">
               <div class="postcard" id="post-{{post.index}}" on-tap="{{selectPost}}">
                   <post-card title="{{post.value['title']}}" date="{{post.value['date']}}">

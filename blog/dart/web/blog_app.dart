@@ -2,7 +2,6 @@ import "dart:html";
 import "dart:convert" show JSON;
 import 'dart:async';
 import "package:polymer/polymer.dart";
-import "package:core_elements/core_animated_pages.dart";
 
 @CustomTag('blog-app')
 class blog_app extends PolymerElement {
@@ -62,10 +61,11 @@ class blog_app extends PolymerElement {
     String id = (target as DivElement).id;
     int index = int.parse(id.split("-")[1]);
     String link = posts[index]["link"];
+    String fileName = posts[index]["filename"];
     if (link.contains("http")) {  // Redirect if it's external pdf
       window.location.assign(link);
     } else {  // Push history state
-      window.location.assign(window.location.href + "/" + link);
+      window.location.assign(window.location.href + "/" + fileName);
     }
   }
 }

@@ -4,6 +4,8 @@ import "package:polymer/polymer.dart";
 
 @CustomTag('post-app')
 class post_app extends PolymerElement {
+  @observable bool smallScreen;
+
   post_app.created() : super.created();
 
   void attached() {

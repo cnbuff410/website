@@ -1,4 +1,6 @@
-<!DOCTYPE html><html><head>
+<!DOCTYPE html><html><head><script src="packages/web_components/platform.js"></script>
+<script src="packages/web_components/dart_support.js"></script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offline Log</title>
@@ -560,14 +562,9 @@ html /deep/ paper-icon-button[disabled]::shadow core-icon {
 html /deep/ core-selector paper-icon-button:not([active])::shadow core-icon {
     fill: #c4c7c7;
 }</style>
-    
-    <!-- include the web_components polyfills with support for Dart. -->
-    <script src="packages/web_components/platform.js"></script>
-<script src="packages/web_components/dart_support.js"></script>
 
     <!-- import the components -->
-    
-    
+     
 </head>
 
 <body fullbleed=""><div hidden=""><style shim-shadowdom="">
@@ -2266,11 +2263,70 @@ mode: cover
 
 
 
+
+<polymer-element name="core-media-query" attributes="query queryMatches">
+  <template>
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
+  </template>
+  <script>
+    Polymer('core-media-query', {
+
+      /**
+       * The Boolean return value of the media query
+       *
+       * @attribute queryMatches
+       * @type Boolean
+       * @default false
+       */
+      queryMatches: false,
+
+      /**
+       * The CSS media query to evaulate
+       *
+       * @attribute query
+       * @type string
+       * @default ''
+       */
+      query: '',
+      ready: function() {
+        this._mqHandler = this.queryHandler.bind(this);
+        this._mq = null;
+      },
+      queryChanged: function() {
+        if (this._mq) {
+          this._mq.removeListener(this._mqHandler);
+        }
+        var query = this.query;
+        if (query[0] !== '(') {
+          query = '(' + this.query + ')';
+        }
+        this._mq = window.matchMedia(query);
+        this._mq.addListener(this._mqHandler);
+        this.queryHandler(this._mq);
+      },
+      queryHandler: function(mq) {
+        this.queryMatches = mq.matches;
+        this.asyncFire('core-media-change', mq);
+      }
+    });
+  </script>
+</polymer-element>
+
+
+
+
 <polymer-element name="post-app">
     <template>
         <style>
           #inject {
             padding: 5% 18%;
+          }
+          #inject.small {
+            padding: 5% 5%;
           }
         </style>
         <style>/*
@@ -2627,6 +2683,8 @@ img {
 }
 </style>
         
+        <core-media-query query="max-width: 640px" querymatches="{{smallScreen}}">
+        </core-media-query>
         <core-toolbar id="core_toolbar">
             <core-icon-button icon="arrow-back" id="home-button" on-tap="{{back}}">
             </core-icon-button>
@@ -2636,7 +2694,7 @@ img {
             <core-icon-button icon="more-vert" id="more-button"></core-icon-button>
         </core-toolbar>     
         <section vertical="" layout="" fullbleed="">
-           <div id="inject"></div>
+           <div id="inject" class="{{ {small: smallScreen } }}"></div>
         </section>
 
     </template>
