@@ -170,8 +170,7 @@ plot还支持同时在一张图里面绘制多个图形，比如:
 具体参数看
 `scatter
 <http://matplotlib.sourceforge.net/api/pyplot_api.html#matplotlib.pyplot.scatter>`_ ，唯一一个不是很确定的是s的取值，我曾经估计是s值要和x和y的列表长
-度一样，也就是大概是点的个数？但具体画的时候发现不是这样，点的个数取决于x和y的
-列表长度。有待研究。
+度一样，也就是大概是点的个数？但具体画的时候发现不是这样，点的个数取决于x和y的列表长度。有待研究。
 
 画Box Plot图
 =============
