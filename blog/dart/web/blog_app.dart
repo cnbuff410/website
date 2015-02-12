@@ -38,7 +38,7 @@ class blog_app extends PolymerElement {
     if (name.contains(prefix)) {
       int position = int.parse(name.split("_")[1], onError:(String source) => 0);
       print("resume to position $position");
-      page.scrollTop = position;
+      $["pages"].scrollTop = position;
     }
   }
 

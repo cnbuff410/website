@@ -16,11 +16,11 @@
                 margin-bottom: 50px;
             }
             
-            .postcard:first-of-type {
+            postcard:first-of-type {
                 margin-top: 50px;
             }
             
-            .postcard:last-of-type {
+            postcard:last-f-type {
                 margin-bottom: 50px;
             }
             
@@ -47,7 +47,7 @@
         <div id="pages" flex>
             <template repeat="{{post in posts | enumerate}}">
               <div class="postcard" id="post-{{post.index}}" on-tap="{{selectPost}}">
-                  <post-card title="{{post.value['title']}}" date="{{post.value['date']}}">
+                  <post-card postTitle="{{post.value['title']}}" date="{{post.value['date']}}">
                   </post-card>
               </div>
             </template>

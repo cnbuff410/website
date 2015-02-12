@@ -6,7 +6,7 @@ import 'package:polymer/polymer.dart';
  */
 @CustomTag('post-card')
 class PostCard extends PolymerElement with Polymer, Observable {
-  @published String title;
+  @published String postTitle;
   @published String date;
   @observable int shadowLevel = 1;
   @observable String year = "1984";

@@ -17,8 +17,9 @@ dispatch
 *.dart.js
 *.dart.js.map
 *.dart.precompiled.js
-web/packages/
 
+blog/web/packages/
+blog/web/post_app.dart._buildLogs.1
 blog/dart/.idea/
 blog/dart/.buildlog
 blog/dart/.pub/
@@ -26,3 +27,4 @@ blog/dart/build.dart
 blog/dart/build/
 blog/dart/packages
 blog/dart/pubspec.lock
+

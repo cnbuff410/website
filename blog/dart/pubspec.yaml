@@ -1,9 +1,9 @@
 name: blog
 description: A sample Polymer application
 dependencies:
-    polymer: ">=0.15.0 <0.16.0"
-    core_elements: ">=0.4.0+1 <0.5.0"
-    paper_elements: ">=0.5.0 <0.6.0"
+    polymer: "any"
+    core_elements: "any"
+    paper_elements: "any"
 transformers:
 - polymer:
     entry_points: [web/blog.html, web/post.html]

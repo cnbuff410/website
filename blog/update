@@ -1,1 +1,1 @@
-goapp deploy /Users/cnbuff410/Work/appengine/kun_website/blog/app.yaml && python trigger.py
+gcloud config set project likunarmstrong && gcloud config set account likunarmstrong@gmail.com && gcloud preview app deploy . && python trigger.py
