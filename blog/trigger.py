@@ -2,7 +2,7 @@
 import urllib
 import urllib2
 
-url = "http://likunarmstrong.appspot.com/blog/update"
+url = "http://blog.kunli.me/update"
 values = {"test":"bar"}
 data = urllib.urlencode(values)
 req = urllib2.Request(url, data)

@@ -4,8 +4,9 @@ dispatch:
   - url: "*/favicon.ico"
     module: default
 
+  - url: "blog.kunli.me/*"
+    module: blog
+
   - url: "*/"
     module: default
 
-  - url: "*/blog/*"
-    module: blog

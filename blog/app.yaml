@@ -12,25 +12,25 @@ default_expiration: "3d"
 
 handlers:
 # SEO
-- url: /blog/(robots\.txt|favicon\.ico)
+- url: /(robots\.txt|favicon\.ico)
   static_files: web/static/\1
   upload: web/static/(robots\.txt|favicon\.ico)
 
-- url: /blog/(.*\.(js))$
+- url: /(.*\.(js))$
   static_files: web/\1
   upload: web/.*\.(js)$
 
-- url: /blog/css
+- url: /css
   static_dir: web/css
   #expiration: "60m"
 
-- url: /blog/packages
+- url: /packages
   static_dir: web/packages
 
-- url: /blog/pdf
+- url: /pdf
   static_dir: static/pdf
 
-- url: /blog/images
+- url: /images
   static_dir: static/img
 
 - url: /.*
