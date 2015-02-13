@@ -10,6 +10,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
 	"appengine"
 
 	"github.com/PuerkitoBio/goquery"
@@ -76,10 +77,13 @@ func getPostsMeta(r *http.Request) []*Post {
 	return posts
 }
 
-func getPostContent(title string) (string, error) {
-	fname := title + ".html"
-	filePath := filepath.Join(pathPrefix, fname)
-	content, _ := os.Open(filePath)
+func getPostContent(filename string) (string, error) {
+	fullname := filename + ".html"
+	filePath := filepath.Join(pathPrefix, fullname)
+	content, err := os.Open(filePath)
+	if err != nil {
+		return "", err
+	}
 	defer content.Close()
 
 	doc, err := goquery.NewDocumentFromReader(content)

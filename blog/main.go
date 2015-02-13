@@ -7,8 +7,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
+	"strings"
+	"time"
 
+	"github.com/gorilla/feeds"
 	"github.com/gorilla/mux"
+
 	"appengine"
 	"appengine/datastore"
 	"appengine/memcache"
@@ -23,7 +28,7 @@ const (
 
 func init() {
 	r := mux.NewRouter()
-	s := r.PathPrefix("/blog").Subrouter()
+	s := r.PathPrefix("/").Subrouter()
 
 	// API
 	s.HandleFunc("/update", updatePostCacheHandler).Methods("POST")
@@ -31,6 +36,7 @@ func init() {
 	s.HandleFunc("/{link}", fetchPostContentHandler).Methods("GET").Queries("mode", "raw")
 
 	// Serve page
+	s.HandleFunc("/rss", feedsHandler).Methods("GET")
 	s.HandleFunc("/{link}", postHandler).Methods("GET")
 	s.HandleFunc("/", blogHandler).Methods("GET")
 
@@ -45,11 +51,57 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./web/post.html")
 }
 
+func feedsHandler(w http.ResponseWriter, r *http.Request) {
+	c := appengine.NewContext(r)
+	c.Infof("here in rss")
+	now := time.Now()
+	author := &feeds.Author{"Kun Li", "likunarmstrong@gmail.com"}
+	feed := &feeds.Feed{
+		Title:       "Offline Log",
+		Link:        &feeds.Link{Href: "http://blog.kunli.me"},
+		Description: "Kun Li's Blog",
+		Author:      author,
+		Created:     now,
+	}
+
+	c.Infof("here in rss1")
+	posts := getPostsMeta(r)
+	var items = []*feeds.Item{}
+	for _, p := range posts {
+		d := strings.Split(p.Date, "-")
+		year, _ := strconv.Atoi(d[0])
+		month, _ := strconv.Atoi(d[1])
+		day, _ := strconv.Atoi(d[2])
+		datetime := time.Date(year, time.Month(month), day, 0, 0, 0, 0, time.UTC)
+
+		content, err := getPostContent(p.FileName)
+		if err != nil {
+			content = "N/A"
+			c.Errorf("%v", err)
+		}
+		items = append(items, &feeds.Item{
+			Title:       p.Title,
+			Link:        &feeds.Link{Href: p.Link},
+			Description: content,
+			Author:      author,
+			Created:     datetime,
+		})
+	}
+
+	feed.Items = items
+	rss, err := feed.ToRss()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+	c.Infof("here in rss2")
+	w.Header().Set("Content-Type", "text/xml")
+	w.Write([]byte(rss))
+}
+
 func updatePostCacheHandler(w http.ResponseWriter, r *http.Request) {
 	c := appengine.NewContext(r)
 	posts := getPostsMeta(r)
 	if len(posts) == 0 {
-		fmt.Fprintf(w, "There is no article to update")
 		return
 	}
 	var keys []*datastore.Key

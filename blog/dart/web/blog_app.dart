@@ -27,8 +27,7 @@ class blog_app extends PolymerElement {
   }
 
   void loadAllPostMeta() {
-    //String url = window.location.href + "all";
-    String url = "http://likunarmstrong.appspot.com/blog/all";
+    String url = window.location.href + "all";
     HttpRequest.getString(url).then(onPostMetaDataLoaded);
   }
 
@@ -65,7 +64,7 @@ class blog_app extends PolymerElement {
     if (link.contains("http")) {  // Redirect if it's external pdf
       window.location.assign(link);
     } else {  // Push history state
-      window.location.assign(window.location.href + "/" + fileName);
+      window.location.assign(window.location.href + fileName);
     }
   }
 }
